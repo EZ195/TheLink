@@ -10,9 +10,11 @@
 <body>
 	<form>
 		<input type="email" placeholder="아이디(이메일)" id="loginEmailInput">
+		<button id="email_duplicate">중복확인</button>
 		<input type="password" placeholder="비밀번호" id="passwordInput">
 		<input type="password" placeholder="비밀번호 확인" id=passwordCheck>
 		<input type="text" placeholder="닉네임" id="nicknameInput">
+		<button id="nickname_duplicate">중복확인</button>
 		
 		<div> <!-- 생일 -->
 			<label>생년월일</label>
