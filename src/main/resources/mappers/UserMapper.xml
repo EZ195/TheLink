@@ -3,5 +3,31 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ezone.link.user.dao.UserDAO">
+	<insert id="addUser" parameterType="com.ezone.link.user.model.User">
+		INSERT INTO `user`
+			(
+				`loginEmail`
+				,`password`
+				,`nickname`
+				,`birthYear`
+				,`birthMonth`
+				,`birthDay`
+				,`gender`
+				,`createdAt`
+				,`updatedAt`
+			)
+		VALUE
+			(
+				#{loginEmail}
+				,#{password}
+				,#{nickname}
+				,#{birthYear}
+				,#{birthMonth}
+				,#{birthDay}
+				,#{gender}
+				,now()
+				,now()
+			)
+	</insert>
 
 </mapper>

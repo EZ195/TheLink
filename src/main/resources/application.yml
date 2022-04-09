@@ -2,10 +2,10 @@ spring:
   mvc:
     static-path-pattern: /static/**
     view:
-      prefix: /WEB-INF/JSP/
+      prefix: /WEB-INF/jsp/
       suffix: .jsp
   datasource: 
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/theLink?characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/the_link?characterEncoding=UTF-8
     username: root
     password: root
