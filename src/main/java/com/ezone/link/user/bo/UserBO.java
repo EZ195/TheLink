@@ -15,7 +15,26 @@ public class UserBO {
 	public int addUser(User user) {
 		
 		return userDAO.addUser(user);
+	}
+	
+	public boolean loginEmailIsDuplicate(String loginEmail) {
+		int count = userDAO.loginEmailIsDuplicate(loginEmail);
 		
+		if(count == 0) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+	public boolean nicknameIsDuplicate(String nickname) {
+		int count = userDAO.nicknameIsDuplicate(nickname);
+		if(count == 0) {
+			return false;
+		}
+		else {
+			return true;
+		}
 	}
 
 }

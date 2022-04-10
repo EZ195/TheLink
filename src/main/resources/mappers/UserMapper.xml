@@ -29,5 +29,22 @@
 				,now()
 			)
 	</insert>
+	<select id="loginEmailIsDuplicate" parameterType="String" resultType="int">
+		SELECT
+				count(*)
+		FROM
+				`user`
+		WHERE
+				`loginEmail` = #{loginEmail}
+	</select>
+	
+	<select id="nicknameIsDuplicate" parameterType="String" resultType="int">
+		SELECT
+				count(*)
+		FROM
+				`user`
+		WHERE
+				`nickname` = #{nickname}
+	</select>
 
 </mapper>

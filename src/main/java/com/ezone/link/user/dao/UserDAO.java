@@ -1,5 +1,6 @@
 package com.ezone.link.user.dao;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.ezone.link.user.model.User;
@@ -8,5 +9,7 @@ import com.ezone.link.user.model.User;
 public interface UserDAO {
 	
 	public int addUser(User user);
+	public int loginEmailIsDuplicate(@Param("loginEmail") String loginEmail);
+	public int nicknameIsDuplicate(@Param("nickname") String nickname);
 
 }
