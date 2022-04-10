@@ -46,5 +46,25 @@
 		WHERE
 				`nickname` = #{nickname}
 	</select>
+	<select id="getUser" parameterType="map" resultType="com.ezone.link.user.model.User">
+		SELECT
+				`id`
+				,`loginEmail`
+				,`password`
+				,`nickname`
+				,`birthYear`
+				,`birthMonth`
+				,`birthDay`
+				,`gender`
+				,`createdAt`
+				,`updatedAt`
+		FROM
+				`user`
+		WHERE
+				`loginEmail` = #{loginEmail}
+				AND `password` = #{password}
+				
+	
+	</select>
 
 </mapper>

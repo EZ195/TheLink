@@ -3,6 +3,7 @@ package com.ezone.link.user.bo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ezone.link.common.EncryptUtills;
 import com.ezone.link.user.dao.UserDAO;
 import com.ezone.link.user.model.User;
 
@@ -13,6 +14,9 @@ public class UserBO {
 	private UserDAO userDAO;
 	
 	public int addUser(User user) {
+		
+		String encryptPw = EncryptUtills.md5(user.getPassword());
+		user.setPassword(encryptPw);
 		
 		return userDAO.addUser(user);
 	}
@@ -35,6 +39,13 @@ public class UserBO {
 		else {
 			return true;
 		}
+	}
+	
+	public User getUser(String loginEmail, String password) {
+		
+		String encryptPw = EncryptUtills.md5(password);
+		
+		return userDAO.getUser(loginEmail, encryptPw);
 	}
 
 }
