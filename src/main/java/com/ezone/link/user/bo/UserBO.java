@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 
 import com.ezone.link.common.EncryptUtills;
 import com.ezone.link.user.dao.UserDAO;
+import com.ezone.link.user.interest.bo.InterestBO;
+import com.ezone.link.user.interest.model.Interest;
 import com.ezone.link.user.model.User;
 
 @Service
@@ -13,12 +15,25 @@ public class UserBO {
 	@Autowired
 	private UserDAO userDAO;
 	
-	public int addUser(User user) {
+	@Autowired
+	private InterestBO interestBO;
+
+	
+	public int addUser(
+			String loginEmail,
+			String password,
+			String nickname,
+			int birthYear,
+			int birthMonth,
+			int birthDay,
+			String gender,
+			String userInterest) {
 		
-		String encryptPw = EncryptUtills.md5(user.getPassword());
-		user.setPassword(encryptPw);
+		String encryptPw = EncryptUtills.md5(password);
+
+		userDAO.addUser();
 		
-		return userDAO.addUser(user);
+		return interestBO.addUserInterest(null);
 	}
 	
 	public boolean loginEmailIsDuplicate(String loginEmail) {

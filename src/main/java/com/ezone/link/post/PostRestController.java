@@ -47,10 +47,6 @@ public class PostRestController {
 		return result;
 	}
 	
-	@PostMapping("/postList") {
-		
-	}
 	
-	@PostMapping("/")
 
 }

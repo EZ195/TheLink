@@ -15,9 +15,6 @@ public class PostBO {
 	public int addPost(Post post) {
 		return postDAO.addPost(post);
 	}
-	
-	public detailPost() {
-		
-	}
+
 
 }

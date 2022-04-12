@@ -24,9 +24,17 @@ public class UserRestController {
 	private UserBO userBO;
 	
 	@PostMapping("/sign_up")
-	public Map<String, String> signup(User user) {
+	public Map<String, String> signup(
+			@RequestParam("loginEmail") String loginEmail,
+			@RequestParam("password") String password,
+			@RequestParam("nickname") String nickname,
+			@RequestParam("birthYear") int birthYear,
+			@RequestParam("birthMonth") int birthMonth,
+			@RequestParam("birthDay") int birthDay,
+			@RequestParam("gender") String gender,
+			@RequestParam("userInterest") String userInterest) {
 		
-		int count  = userBO.addUser(user);
+		int count = userBO.addUser(loginEmail, password, nickname, birthYear, birthMonth, birthDay, gender, userInterest)
 		
 		Map<String, String> result = new HashMap<>();
 		

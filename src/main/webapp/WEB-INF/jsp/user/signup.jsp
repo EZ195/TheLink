@@ -86,16 +86,16 @@
 				<!-- 관심사 -->
 				<div class="mb-3">
 					<h3>관심사를 선택해주세요(중복체크 가능)</h3>
-					<div class="form-check" mb-3>
+					<div class="form-check">
 						<h5>문화·예술</h5>
-						<input type=checkbox name="culture" value="전시">전시
-						<input type=checkbox name="culture" value="영화">영화
-						<input type=checkbox name="culture" value="뮤지컬">뮤지컬
-						<input type=checkbox name="culture" value="공연">공연
-						<input type=checkbox name="culture" value="디자인">디자인
-						<input type=checkbox name="culture" value="박물관">박물관
-						<input type=checkbox name="culture" value="연극">연극
-						<input type=checkbox name="culture" value="콘서트">콘서트
+						<input type=checkbox name="culture" id="culture" value="전시">전시
+						<input type=checkbox name="culture" id="culture" value="영화">영화
+						<input type=checkbox name="culture" id="culture" value="뮤지컬">뮤지컬
+						<input type=checkbox name="culture" id="culture" value="공연">공연
+						<input type=checkbox name="culture" id="culture" value="디자인">디자인
+						<input type=checkbox name="culture" id="culture" value="박물관">박물관
+						<input type=checkbox name="culture" id="culture" value="연극">연극
+						<input type=checkbox name="culture" id="culture" value="콘서트">콘서트
 					</div>
 					<div class="form-check mb-3">
 						<h5>운동·액티비티</h5>
@@ -248,6 +248,7 @@
 				let birthMonth = $("#month").val();
 				let birthDay = $("#day").val();
 				let gender = $("input:radio[name=gender]:checked").val();
+				let interest = $('input:checkbox[id="culture"]:checked').val();
 				
 				// 회원가입 폼 유효성 검사
 				if(loginEmail == "") {
@@ -322,6 +323,19 @@
 						alert("에러 발생");
 					}
 				});
+				
+				$.ajax({
+					type:"post",
+					url:"/user/interest/addInterest",
+					data:{"userInterest":interest},
+					success:function(data){
+						
+					},
+					error:function(){
+						alert("에러 발생");
+					}
+					
+				})
 			});
 			
 		});
