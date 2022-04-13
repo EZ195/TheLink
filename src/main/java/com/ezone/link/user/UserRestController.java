@@ -34,7 +34,7 @@ public class UserRestController {
 			@RequestParam("gender") String gender,
 			@RequestParam("userInterest") String userInterest) {
 		
-		int count = userBO.addUser(loginEmail, password, nickname, birthYear, birthMonth, birthDay, gender, userInterest)
+		int count = userBO.addUser(loginEmail, password, nickname, birthYear, birthMonth, birthDay, gender, userInterest);
 		
 		Map<String, String> result = new HashMap<>();
 		

@@ -17,7 +17,7 @@ public class UserBO {
 	
 	@Autowired
 	private InterestBO interestBO;
-
+	
 	
 	public int addUser(
 			String loginEmail,
@@ -31,9 +31,20 @@ public class UserBO {
 		
 		String encryptPw = EncryptUtills.md5(password);
 
-		userDAO.addUser();
+		User user = new User();
+		user.setLoginEmail(loginEmail);
+		user.setPassword(encryptPw);
+		user.setNickname(nickname);
+		user.setBirthYear(birthYear);
+		user.setBirthMonth(birthMonth);
+		user.setBirthDay(birthDay);
+		user.setGender(gender);
 		
-		return interestBO.addUserInterest(null);
+		userDAO.addUser(user);
+		
+		int userId = user.getId();
+		
+		return interestBO.addUserInterest(userId, userInterest);
 	}
 	
 	public boolean loginEmailIsDuplicate(String loginEmail) {

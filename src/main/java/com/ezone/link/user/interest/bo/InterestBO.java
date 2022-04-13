@@ -13,14 +13,8 @@ public class InterestBO {
 	@Autowired
 	private InterestDAO interestDAO;
 	
-	public int addUserInterest(Interest interest) {
-		
-		User user = new User();
-		
-		int userId = user.getId();
-		interest.setUserId(userId);
-		
-		return interestDAO.addUserInterest(interest);
-	}
+	public int addUserInterest(int userId, String userInterest) {
 	
+		return interestDAO.addUserInterest(userId, userInterest);
+	}
 }

@@ -308,7 +308,7 @@
 				$.ajax({
 					type:"post",
 					url:"/user/sign_up",
-					data:{"loginEmail":loginEmail,"password":password,"nickname":nickname, "birthYear":birthYear,"birthMonth":birthMonth,"birthDay":birthDay,"gender":gender},
+					data:{"loginEmail":loginEmail,"password":password,"nickname":nickname, "birthYear":birthYear,"birthMonth":birthMonth,"birthDay":birthDay,"gender":gender,"userInterest":interest},
 					success:function(data){
 						if(data.result == "success") {
 							alert("회원가입 성공");
@@ -323,19 +323,6 @@
 						alert("에러 발생");
 					}
 				});
-				
-				$.ajax({
-					type:"post",
-					url:"/user/interest/addInterest",
-					data:{"userInterest":interest},
-					success:function(data){
-						
-					},
-					error:function(){
-						alert("에러 발생");
-					}
-					
-				})
 			});
 			
 		});
