@@ -19,15 +19,16 @@ footer {
 	color:white;
 }
 
-#loginEmailDuplication{
+#loginEmailDuplication {
 	display:none;
 }
-#loginEmailNotDuplication{
+#loginEmailNotDuplication {
 	display:none;
 }
-#nicknameDuplication{
+#nicknameDuplication {
 	display:none;
 }
-#nicknameNotDuplication{
+#nicknameNotDuplication {
 	display:none;
 }
+

@@ -1,5 +1,7 @@
 package com.ezone.link.user.bo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +10,7 @@ import com.ezone.link.user.dao.UserDAO;
 import com.ezone.link.user.interest.bo.InterestBO;
 import com.ezone.link.user.interest.model.Interest;
 import com.ezone.link.user.model.User;
+import com.ezone.link.user.profile.bo.ProfileBO;
 
 @Service
 public class UserBO {
@@ -17,6 +20,9 @@ public class UserBO {
 	
 	@Autowired
 	private InterestBO interestBO;
+	
+	@Autowired
+	private ProfileBO profileBO;
 	
 	
 	public int addUser(
@@ -41,10 +47,10 @@ public class UserBO {
 		user.setGender(gender);
 		
 		userDAO.addUser(user);
-		
 		int userId = user.getId();
+		interestBO.addUserInterest(userId, userInterest);
 		
-		return interestBO.addUserInterest(userId, userInterest);
+		return profileBO.addProfile(userId, nickname); 
 	}
 	
 	public boolean loginEmailIsDuplicate(String loginEmail) {
