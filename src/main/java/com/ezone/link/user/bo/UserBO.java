@@ -50,7 +50,7 @@ public class UserBO {
 		int userId = user.getId();
 		interestBO.addUserInterest(userId, userInterest);
 		
-		return profileBO.addProfile(userId, nickname); 
+		return profileBO.addUserProfile(userId, nickname); 
 	}
 	
 	public boolean loginEmailIsDuplicate(String loginEmail) {

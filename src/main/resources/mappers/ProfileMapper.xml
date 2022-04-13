@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ezone.link.user.profile.dao.ProfileDAO">
-	<insert id="addProfile" parameterType="map">
+	<insert id="addUserProfile" parameterType="map">
 		INSERT INTO `profile`
 			(
 				`userId`
@@ -19,7 +19,27 @@
 				,now()
 				,now()
 			)
-		
 	</insert>
+	<select id="getUserProfile" parameterType="int" resultType="com.ezone.link.user.profile.model.Profile">
+		SELECT
+				`userNickname`
+				,`introduce`
+				,`profileImagePath`
+		FROM
+				`profile`
+		WHERE
+				`userId` = #{userId}
+	</select>
+	<update id="updateUserProfile" parameterType="map">
+		UPDATE
+				`profile`
+		SET
+				`userNickname` = #{userNickname}
+				,`introduce` = #{introduce}
+				,`profileImagePath` = #{profileImagePath}
+				,`updatedAt` = now()
+		WHERE
+				`userId` = #{userId}
+	</update>
 
 </mapper>

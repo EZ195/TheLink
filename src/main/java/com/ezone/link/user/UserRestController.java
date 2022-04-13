@@ -85,7 +85,7 @@ public class UserRestController {
 			result.put("result", "success");
 			
 			session.setAttribute("userId", user.getId());
-			session.setAttribute("userLoginId", user.getLoginEmail());
+			session.setAttribute("userLoginEmail", user.getLoginEmail());
 			session.setAttribute("userNickname", user.getNickname());
 		}
 		else {
