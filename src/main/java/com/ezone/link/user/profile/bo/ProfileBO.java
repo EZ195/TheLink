@@ -15,24 +15,37 @@ public class ProfileBO {
 	@Autowired
 	private ProfileDAO profileDAO;
 	
-	@Autowired
-	private UserBO userBO;
+	public int addUserProfile(int userId, String nickname) {
+		return profileDAO.addUserProfile(userId, nickname);
+	}
 	
+	public boolean nicknameIsDuplicate(String nickname) {
+		int count = profileDAO.nicknameIsDuplicate(nickname);
+		if(count == 0) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
 	
-	public int addUserProfile(int userId, String userNickname) {
-		return profileDAO.addUserProfile(userId, userNickname);
+	public Profile getUserNickname(int userId) {
+		return profileDAO.getUserNickname(userId);
+		
 	}
 	
 	public Profile getUserProfile(int userId) {
 		return profileDAO.getUserProfile(userId);
 	}
 	
-	public int updateProfile(int userId, String userNickname, String introduce, MultipartFile file) {
+	public int updateProfile(int userId, String nickname, String introduce, MultipartFile file) {
 		
 		String filepath = FileManagerService.saveFile(userId, file);
 		
-		profileDAO.updateUserProfile(userId, introduce, filepath);
-		
-		return userBO.updateUserNickname(userId, userNickname);
+		return profileDAO.updateUserProfile(userId, nickname, introduce, filepath);
+	}
+	
+	public int getNickname(String nickname) {
+		return profileDAO.getNickname(nickname);
 	}
 }

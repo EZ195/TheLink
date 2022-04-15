@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ezone.link.user.interest.dao.InterestDAO">
-	<insert id="addUserInterest" parameterType="com.ezone.link.user.interest.model.Interest">
+	<insert id="addUserInterest" parameterType="java.util.List">
 		INSERT INTO `user_interest`
 			(
 				`userId`
@@ -11,12 +11,12 @@
 				,`createdAt`
 			)
 		VALUE
+		<foreach collection="userInterest" item="userInterest" separator=",">
 			(
-				#{userId}
-				,#{userInterest}
-				,now()
+					#{userId}
+					,#{userInterest}
+					,now()	
 			)
-			
+		</foreach>
 	</insert>
-
 </mapper>

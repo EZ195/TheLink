@@ -33,14 +33,13 @@ public class UserBO {
 			int birthMonth,
 			int birthDay,
 			String gender,
-			String userInterest) {
+			List<String> userInterest) {
 		
 		String encryptPw = EncryptUtills.md5(password);
 
 		User user = new User();
 		user.setLoginEmail(loginEmail);
 		user.setPassword(encryptPw);
-		user.setNickname(nickname);
 		user.setBirthYear(birthYear);
 		user.setBirthMonth(birthMonth);
 		user.setBirthDay(birthDay);
@@ -63,25 +62,12 @@ public class UserBO {
 			return true;
 		}
 	}
-	public boolean nicknameIsDuplicate(String nickname) {
-		int count = userDAO.nicknameIsDuplicate(nickname);
-		if(count == 0) {
-			return false;
-		}
-		else {
-			return true;
-		}
-	}
 	
 	public User getUser(String loginEmail, String password) {
 		
 		String encryptPw = EncryptUtills.md5(password);
 		
 		return userDAO.getUser(loginEmail, encryptPw);
-	}
 	
-	public int updateUserNickname(int id, String nickname) {
-		return userDAO.updateUserNickname(id, nickname);
 	}
-
 }

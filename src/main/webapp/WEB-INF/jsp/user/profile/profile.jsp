@@ -27,7 +27,7 @@
 				<div class="profileBox">
 					<img class="profileImg" src="${userProfile.profileImagePath }"> 
 				</div>
-				<h3>${userProfile.userNickname }</h3>
+				<h3>${userProfile.nickname }</h3>
 				<textarea class="form-control mt-3" rows="5">${userProfile.introduce }</textarea>			
 			</div>
 		</section>

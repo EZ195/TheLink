@@ -8,7 +8,6 @@
 			(
 				`loginEmail`
 				,`password`
-				,`nickname`
 				,`birthYear`
 				,`birthMonth`
 				,`birthDay`
@@ -20,7 +19,6 @@
 			(
 				#{loginEmail}
 				,#{password}
-				,#{nickname}
 				,#{birthYear}
 				,#{birthMonth}
 				,#{birthDay}
@@ -37,21 +35,12 @@
 		WHERE
 				`loginEmail` = #{loginEmail}
 	</select>
-	
-	<select id="nicknameIsDuplicate" parameterType="String" resultType="int">
-		SELECT
-				count(*)
-		FROM
-				`user`
-		WHERE
-				`nickname` = #{nickname}
-	</select>
+
 	<select id="getUser" parameterType="map" resultType="com.ezone.link.user.model.User">
 		SELECT
 				`id`
 				,`loginEmail`
 				,`password`
-				,`nickname`
 				,`birthYear`
 				,`birthMonth`
 				,`birthDay`
@@ -64,13 +53,5 @@
 				`loginEmail` = #{loginEmail}
 				AND `password` = #{password}
 	</select>
-	<update id="updateUserNickname" parameterType="int">
-		UPDATE
-				`user`
-		SET
-				`nickname` = #{userNickname}
-		WHERE
-				id = #{userId}
-	</update>
 
 </mapper>

@@ -7,7 +7,6 @@ public class User {
 	private int id;
 	private String loginEmail;
 	private String password;
-	private String nickname;
 	private int birthYear;
 	private int birthMonth;
 	private int birthDay;
@@ -32,12 +31,6 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	public String getNickname() {
-		return nickname;
-	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
 	}
 	public int getBirthYear() {
 		return birthYear;

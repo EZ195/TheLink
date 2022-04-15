@@ -10,12 +10,20 @@ public interface ProfileDAO {
 	
 	public int addUserProfile(
 			@Param("userId") int userId,
-			@Param("userNickname") String userNickname);
+			@Param("nickname") String nickname);
+	
+	public int nicknameIsDuplicate(@Param("nickname") String nickname);
+	
+	public Profile getUserNickname(@Param("userId") int userId);
 	
 	public Profile getUserProfile(@Param("userId") int userId);
 	
 	public int updateUserProfile(
 			@Param("userId") int userId,
+			@Param("nickname") String nickname,
 			@Param("introduce") String introduce,
 			@Param("profileImagePath") String filePath);
+	
+	public int getNickname(
+			@Param("nickname") String nickname);
 }

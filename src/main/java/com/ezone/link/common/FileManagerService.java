@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class FileManagerService {
 	
-	public final static String FILE_UPLOAD_PATH = "C:\\Users\\EZi09\\Desktop\\ezone\\theLink\\upload\\images\\profile/";
+	public final static String FILE_UPLOAD_PATH = "C:\\Users\\EZi09\\Desktop\\ezone\\theLink\\upload\\profileImage/";
 	
 	private static Logger logger = LoggerFactory.getLogger(FileManagerService.class);
 	
@@ -43,7 +43,7 @@ public class FileManagerService {
 			logger.error("FileManagerService-saveFile : 파일 저장 에러");
 		}
 		
-		return "/images/profile/" +directory +file.getOriginalFilename();
+		return "/profileImage/" +directory +file.getOriginalFilename();
 	}
 
 }

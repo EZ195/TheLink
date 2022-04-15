@@ -15,7 +15,9 @@ public class InterestBO {
 	@Autowired
 	private InterestDAO interestDAO;
 	
-	public int addUserInterest (int userId, String userInterest) {
+	public int addUserInterest (int userId, List<String> userInterest) {
+		
+		System.out.println("bo" + userInterest);
 	
 		return interestDAO.addUserInterest(userId, userInterest);
 	}

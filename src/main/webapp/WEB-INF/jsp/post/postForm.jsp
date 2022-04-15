@@ -69,7 +69,7 @@
 				$.ajax({
 					type:"post",
 					url:"/post/create",
-					data:{"title":title,"content":content,"meetingDate":meetingDate,"headcount":headcount},
+					data:{"title":title,"content":content,"meetingDate":date,"headcount":headcount},
 					success:function(data){
 						if(data.result == "success") {
 							alert("업로드 성공");

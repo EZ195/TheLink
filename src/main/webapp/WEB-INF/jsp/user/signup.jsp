@@ -216,7 +216,7 @@
 				
 				$.ajax({
 					type:"get",
-					url:"/user/nickname_duplicate",
+					url:"/user/profile/nickname_duplicate",
 					data:{"nickname":nickname},
 					success:function(data){
 						nicknameChecked = true;
@@ -248,6 +248,7 @@
 				let birthMonth = $("#month").val();
 				let birthDay = $("#day").val();
 				let gender = $("input:radio[name=gender]:checked").val();
+				let interest = $("input[name='interest']:checked").val();
 
 				var interestList = [];
 				
@@ -313,7 +314,7 @@
 				$.ajax({
 					type:"post",
 					url:"/user/sign_up",
-					data:{"loginEmail":loginEmail,"password":password,"nickname":nickname, "birthYear":birthYear,"birthMonth":birthMonth,"birthDay":birthDay,"gender":gender,"userInterest":interestList},
+					data:{"loginEmail":loginEmail,"password":password,"nickname":nickname, "birthYear":birthYear,"birthMonth":birthMonth,"birthDay":birthDay,"gender":gender,"userInterestList":interestList},
 					success:function(data){
 						if(data.result == "success") {
 							alert("회원가입 성공");

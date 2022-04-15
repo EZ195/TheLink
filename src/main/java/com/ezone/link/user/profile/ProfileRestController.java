@@ -23,8 +23,21 @@ public class ProfileRestController {
 	@Autowired
 	private ProfileBO profileBO;
 	
-	@GetMapping("/profile_update")
+	@GetMapping("/nickname_duplicate")
+	public Map<String, Boolean> nicknameDuplicate(@RequestParam("nickname") String nickname) {
+		
+		boolean isDuplicate = profileBO.nicknameIsDuplicate(nickname);
+		
+		Map<String, Boolean> result = new HashMap<>();
+		
+		result.put("isDuplicate", isDuplicate);
+		
+		return result;
+	}
+	
+	@PostMapping("/profile_update")
 	public Map<String, String> updateProfile(
+			@RequestParam("nickname") String nickname,
 			@RequestParam("introduce") String introduce,
 			@RequestParam(value="profileImagePath" , required = false) MultipartFile file,
 			HttpServletRequest request) {
@@ -32,9 +45,12 @@ public class ProfileRestController {
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
 		
-		int count = profileBO.updateProfile(userId, introduce, file);
+		int count = profileBO.updateProfile(userId, nickname, introduce, file);
 		
+		System.out.println(nickname);
+		System.out.println(introduce);
 		
+
 		Map<String, String> result = new HashMap<>();
 		
 		if(count == 1) {
@@ -44,7 +60,6 @@ public class ProfileRestController {
 			result.put("result", "fail");
 		}
 		return result;
-		
 	}
 
 }

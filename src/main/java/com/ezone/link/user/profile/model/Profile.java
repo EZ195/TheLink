@@ -6,7 +6,7 @@ public class Profile {
 	
 	private int id;
 	private int userId;
-	private String userNickname;
+	private String nickname;
 	private String introduce;
 	private String profileImagePath;
 	private Date createdAt;
@@ -24,11 +24,11 @@ public class Profile {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	public String getUserNickname() {
-		return userNickname;
+	public String getNickname() {
+		return nickname;
 	}
-	public void setUserNickname(String userNickname) {
-		this.userNickname = userNickname;
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 	public String getIntroduce() {
 		return introduce;
@@ -54,5 +54,6 @@ public class Profile {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-
+	
+	
 }

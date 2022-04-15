@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ezone.link.user.bo.UserBO;
 import com.ezone.link.user.model.User;
+import com.ezone.link.user.profile.model.Profile;
 
 @RestController
 @RequestMapping("/user")
@@ -34,7 +35,7 @@ public class UserRestController {
 			@RequestParam("birthMonth") int birthMonth,
 			@RequestParam("birthDay") int birthDay,
 			@RequestParam("gender") String gender,
-			@RequestParam("userInterest") String userInterest) {
+			@RequestParam("userInterestList[]") List<String> userInterest) {
 				
 		
 		int count = userBO.addUser(loginEmail, password, nickname, birthYear, birthMonth, birthDay, gender, userInterest);
@@ -61,18 +62,6 @@ public class UserRestController {
 		return result;
 	}
 	
-	@GetMapping("/nickname_duplicate")
-	public Map<String, Boolean> nicknameDuplicate(@RequestParam("nickname") String nickname) {
-		
-		boolean isDuplicate = userBO.nicknameIsDuplicate(nickname);
-		
-		Map<String, Boolean> result = new HashMap<>();
-		
-		result.put("isDuplicate", isDuplicate);
-		
-		return result;
-	}
-	
 	@PostMapping("/sign_in")
 	public Map<String, String> signin(
 			@RequestParam("loginEmail") String loginEmail,
@@ -80,7 +69,7 @@ public class UserRestController {
 			HttpServletRequest request) {
 				
 		User user = userBO.getUser(loginEmail, password);
-
+		
 		Map<String, String> result = new HashMap<>();
 		HttpSession session = request.getSession();
 		
@@ -89,8 +78,7 @@ public class UserRestController {
 			
 			session.setAttribute("userId", user.getId());
 			session.setAttribute("userLoginEmail", user.getLoginEmail());
-			session.setAttribute("userNickname", user.getNickname());
-		}
+;		}
 		else {
 			result.put("result", "fail");
 		}

@@ -7,7 +7,7 @@
 		INSERT INTO `profile`
 			(
 				`userId`
-				,`userNickname`
+				,`nickname`
 				,`createdAt`
 				,`updatedAt`
 			)
@@ -15,14 +15,34 @@
 		VALUE
 			(
 				#{userId}
-				,#{userNickname}
+				,#{nickname}
 				,now()
 				,now()
 			)
 	</insert>
+	
+	<select id="nicknameIsDuplicate" parameterType="String" resultType="int">
+		SELECT
+				count(*)
+		FROM
+				`profile`
+		WHERE
+				`nickname` = #{nickname}
+	</select>
+	
+	<select id="getUserNickname" parameterType="int" resultType="String">
+		SELECT
+				`nickname`
+		
+		FROM
+				`profile`
+		WHERE
+				`userId` = #{userId}
+	</select>
+	
 	<select id="getUserProfile" parameterType="int" resultType="com.ezone.link.user.profile.model.Profile">
 		SELECT
-				`userNickname`
+				`nickname`
 				,`introduce`
 				,`profileImagePath`
 		FROM
@@ -30,11 +50,13 @@
 		WHERE
 				`userId` = #{userId}
 	</select>
+	
 	<update id="updateUserProfile" parameterType="map">
 		UPDATE
 				`profile`
 		SET
-				`introduce` = #{introduce}
+				`nickname` = #{nickname}
+				,`introduce` = #{introduce}
 				,`profileImagePath` = #{profileImagePath}
 				,`updatedAt` = now()
 		WHERE

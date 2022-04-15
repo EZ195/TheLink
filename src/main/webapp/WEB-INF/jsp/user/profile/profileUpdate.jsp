@@ -25,11 +25,11 @@
 			<div class="mb-3">
 				<img src="${userProfile.profileImagePath }"> 
 				<input type="file" class="mt-3" id="fileInput">
-				닉네임 <input type="text" id="updateNickname" value="${userProfile.userNickname }">
+				닉네임 <input type="text" id="updateNickname" value="${userProfile.nickname }">
 				자기 소개 <textarea class="form-control mt-3" rows="5" id="introduceInput">${userProfile.introduce }</textarea>				
 			</div>
 			<div>
-				<h3><a href="/user/profile/profile_view">취소</a></h3> <h3 class="text-primary"><a id="updateBtn" href="/user/profile/profile_update">완료</a></h3>
+				<h3><a href="/user/profile/profile_view">취소</a></h3> <h3 class="text-primary"><a id="updateBtn" data-user-id="${userProfile.userId } href="/user/profile/profile_update">완료</a></h3>
 			</div>
 		</section>
 		
@@ -40,20 +40,19 @@
 		$().ready(function(){
 			$("#updateBtn").on("click",function(){
 				
+				let nickname = $("#updateNickname").val();
 				let introduce = $("#introduceInput").val();
 				
-				var formData = new formData();
-				formData.append("introduce",introduce);
-				formData.append("profileImagePath",$("#fileInput")[0].files[0]);
+				// var formData = new formData();
+				// formData.append("nickname",nickname);
+				// formData.append("introduce",introduce);
+				// formData.append("profileImagePath",$("#fileInput")[0].files[0]);
 				
 				
 				$.ajax({
 					type:"post",
 					url:"/user/profile/profile_update",
-					data:formData,
-					enctype:"multipart/form-data",
-					processData:false,
-					contentType:false,
+					data:{"nickname":nickname,"introduce":introduce},
 					success:function(data) {
 						if(data.result == "success") {
 							alert("수정 성공");

@@ -23,7 +23,7 @@
 	<header class="d-flex justify-content-center align-items-center">
 		<h1>THE LINK</h1>
 		<c:if test="${not empty userId }">
-			${userNickname }님이 로그인 중 <a href="/user/sign_out">로그아웃</a>
+			${nickname }님이 로그인 중 <a href="/user/sign_out">로그아웃</a>
 		</c:if>
 	</header>
 
