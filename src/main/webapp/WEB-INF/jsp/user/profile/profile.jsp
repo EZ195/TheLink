@@ -24,7 +24,10 @@
 		<section>
 			<div class="mb-3">
 				<h1><a href="/user/profile/update_view"><i class="bi bi-eraser-fill"></i></a></h1>
-				<img src="${userProfile.profileImagePath }"> <h3>${userProfile.userNickname }</h3>
+				<div class="profileBox">
+					<img class="profileImg" src="${userProfile.profileImagePath }"> 
+				</div>
+				<h3>${userProfile.userNickname }</h3>
 				<textarea class="form-control mt-3" rows="5">${userProfile.introduce }</textarea>			
 			</div>
 		</section>

@@ -79,5 +79,9 @@ public class UserBO {
 		
 		return userDAO.getUser(loginEmail, encryptPw);
 	}
+	
+	public int updateUserNickname(int id, String nickname) {
+		return userDAO.updateUserNickname(id, nickname);
+	}
 
 }

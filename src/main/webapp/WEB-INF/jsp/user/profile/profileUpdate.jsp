@@ -24,13 +24,12 @@
 		<section>
 			<div class="mb-3">
 				<img src="${userProfile.profileImagePath }"> 
-				<a href="#fileInput">프로필 이미지 바꾸기</a>
 				<input type="file" class="mt-3" id="fileInput">
 				닉네임 <input type="text" id="updateNickname" value="${userProfile.userNickname }">
 				자기 소개 <textarea class="form-control mt-3" rows="5" id="introduceInput">${userProfile.introduce }</textarea>				
 			</div>
 			<div>
-				<h3><a href="/user/profile/profile_view">취소</a></h3> <h3 id="updateBtn" class="text-primary">완료</h3>
+				<h3><a href="/user/profile/profile_view">취소</a></h3> <h3 class="text-primary"><a id="updateBtn" href="/user/profile/profile_update">완료</a></h3>
 			</div>
 		</section>
 		
@@ -41,23 +40,32 @@
 		$().ready(function(){
 			$("#updateBtn").on("click",function(){
 				
-				let nickname = $("#updateNickname").val();
-				let profileImagePath = $("#updateNickname").val();
-				let introduce = $("#updateNickname").val();
+				let introduce = $("#introduceInput").val();
 				
-				if (nickname == "") {
-					alert("닉네임은 비워두실 수 없습니다");
-					return;
-				}
+				var formData = new formData();
+				formData.append("introduce",introduce);
+				formData.append("profileImagePath",$("#fileInput")[0].files[0]);
+				
+				
 				$.ajax({
 					type:"post",
 					url:"/user/profile/profile_update",
-					data{"userNickname":nickname,"profileImagePath":profileImagePath,"introduce":introduce},
+					data:formData,
+					enctype:"multipart/form-data",
+					processData:false,
+					contentType:false,
 					success:function(data) {
+						if(data.result == "success") {
+							alert("수정 성공");
+							location.href="/user/profile/profile_view";
+						}
+						else {
+							alert("수정 실패");
+						}
 						
 					},
 					error:function(){
-						
+						alert("에러 발생");
 					}
 				});
 			});

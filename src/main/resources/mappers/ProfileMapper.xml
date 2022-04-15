@@ -34,8 +34,7 @@
 		UPDATE
 				`profile`
 		SET
-				`userNickname` = #{userNickname}
-				,`introduce` = #{introduce}
+				`introduce` = #{introduce}
 				,`profileImagePath` = #{profileImagePath}
 				,`updatedAt` = now()
 		WHERE

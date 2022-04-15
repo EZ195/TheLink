@@ -248,7 +248,8 @@
 				let birthMonth = $("#month").val();
 				let birthDay = $("#day").val();
 				let gender = $("input:radio[name=gender]:checked").val();
-				let interest = $('input:checkbox[name="interest"]:checked').val();
+
+				var interestList = [];
 				
 				// 회원가입 폼 유효성 검사
 				if(loginEmail == "") {
@@ -305,10 +306,14 @@
 					return;
 				}
 				
+			    $("input[name='interest']:checked").each(function(i) {
+			    	interestList.push($(this).val());
+			    });
+
 				$.ajax({
 					type:"post",
 					url:"/user/sign_up",
-					data:{"loginEmail":loginEmail,"password":password,"nickname":nickname, "birthYear":birthYear,"birthMonth":birthMonth,"birthDay":birthDay,"gender":gender,"userInterest":interest},
+					data:{"loginEmail":loginEmail,"password":password,"nickname":nickname, "birthYear":birthYear,"birthMonth":birthMonth,"birthDay":birthDay,"gender":gender,"userInterest":interestList},
 					success:function(data){
 						if(data.result == "success") {
 							alert("회원가입 성공");

@@ -1,6 +1,8 @@
 package com.ezone.link.user;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,19 +35,20 @@ public class UserRestController {
 			@RequestParam("birthDay") int birthDay,
 			@RequestParam("gender") String gender,
 			@RequestParam("userInterest") String userInterest) {
+				
 		
 		int count = userBO.addUser(loginEmail, password, nickname, birthYear, birthMonth, birthDay, gender, userInterest);
-		
+	
 		Map<String, String> result = new HashMap<>();
-		
+			
 		if(count == 1) {
 			result.put("result", "success");
 		}
 		else {
 			result.put("result", "fail");
 		}
-		
-		return result;
+
+		return result;	
 	}
 	
 	@GetMapping("/loginEmail_duplicate")

@@ -22,7 +22,7 @@ public class ProfileController {
 	private ProfileBO profileBO;
 	
 	@GetMapping("/profile_view")
-	public String getUserProfile(HttpServletRequest request, Model model) {
+	public String profileView(HttpServletRequest request, Model model) {
 		
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");

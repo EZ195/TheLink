@@ -14,5 +14,8 @@ public interface ProfileDAO {
 	
 	public Profile getUserProfile(@Param("userId") int userId);
 	
-
+	public int updateUserProfile(
+			@Param("userId") int userId,
+			@Param("introduce") String introduce,
+			@Param("profileImagePath") String filePath);
 }

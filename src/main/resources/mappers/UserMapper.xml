@@ -63,8 +63,14 @@
 		WHERE
 				`loginEmail` = #{loginEmail}
 				AND `password` = #{password}
-				
-	
 	</select>
+	<update id="updateUserNickname" parameterType="int">
+		UPDATE
+				`user`
+		SET
+				`nickname` = #{userNickname}
+		WHERE
+				id = #{userId}
+	</update>
 
 </mapper>
