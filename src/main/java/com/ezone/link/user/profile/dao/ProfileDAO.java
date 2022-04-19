@@ -22,6 +22,6 @@ public interface ProfileDAO {
 			@Param("introduce") String introduce,
 			@Param("profileImagePath") String filePath);
 	
-	public int getNickname(
-			@Param("nickname") String nickname);
+	public String getNickname(
+			@Param("userId") int userId);
 }

@@ -30,6 +30,16 @@
 				`nickname` = #{nickname}
 	</select>
 	
+	<select id="getNickname" parameterType="int" resultType="String">
+		SELECT
+				`nickname`
+		FROM
+				`profile`
+		WHERE
+				`userId` = #{userId}
+	
+	</select>
+	
 	<select id="getUserProfile" parameterType="int" resultType="com.ezone.link.user.profile.model.Profile">
 		SELECT
 				`nickname`

@@ -40,7 +40,8 @@ public class ProfileBO {
 		return profileDAO.updateUserProfile(userId, nickname, introduce, filepath);
 	}
 	
-	public int getNickname(String nickname) {
-		return profileDAO.getNickname(nickname);
+	public String getNickname(int userId) {
+		return profileDAO.getNickname(userId);
+		
 	}
 }

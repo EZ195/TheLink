@@ -24,7 +24,6 @@ public class UserBO {
 	@Autowired
 	private ProfileBO profileBO;
 	
-	
 	public int addUser(
 			String loginEmail,
 			String password,
@@ -66,7 +65,11 @@ public class UserBO {
 	public User getUser(String loginEmail, String password) {
 		
 		String encryptPw = EncryptUtills.md5(password);
+				
 		return userDAO.getUser(loginEmail, encryptPw);
+		
+		
+	
 		
 
 	

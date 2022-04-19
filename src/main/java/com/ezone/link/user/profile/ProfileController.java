@@ -30,8 +30,6 @@ public class ProfileController {
 		
 		Profile userProfile = profileBO.getUserProfile(userId);
 		
-		session.setAttribute("userNickname", userProfile.getNickname());
-		
 		model.addAttribute("userProfile",userProfile);
 		
 		return "/user/profile/profile";

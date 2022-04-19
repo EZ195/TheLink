@@ -33,10 +33,11 @@
 						<button id="deleteBtn" type="button" data-post-id="${postDetail.id}">삭제</button>
 						<a href="/post/approve_list_view">신청자 리스트</a>
 					</c:when>
+					<c:when test="${postDetail.userId ne userId  }">
+						<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop_delete">취소하기</button>
+					</c:when>
 					<c:otherwise>
-						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-						  참가신청
-						</button>
+						<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">참여 신청</button>
 					</c:otherwise>
 				</c:choose>
 			</div>
@@ -45,21 +46,15 @@
 	</div>
 	
 	<!-- Modal -->
-	<div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-	  <div class="modal-dialog" role="document">
+	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	  <div class="modal-dialog">
 	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	      </div>
 	      <div class="modal-body">
 	      	참여하시겠습니까?
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-primary">신청하기</button>
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">돌아가기</button>
+	        <button type="button" id="joinBtn" class="btn btn-primary btn-small" data-post-id="${postDetail.id }">확인</button>
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">돌아가기</button>
 	      </div>
 	    </div>
 	  </div>
@@ -83,9 +78,33 @@
 					error:function(){
 						alert("에러 발생");
 					}
-					
 				});
 			});
+			
+			$("#joinBtn").on("click",function(){
+				
+				let postId = $(this).data("post-id");
+				
+				$.ajax({
+					type:"post",
+					url:"/post/join/participate",
+					data:{"postId":postId},
+					success:function(data){
+						if (data.result = "success") {
+							alert("신청완료");
+							location.href="/post/timeline_view";
+						}
+						else {
+							alert("신청 실패");
+						}
+					},
+					error:function(){
+						alert("에러 발생");						
+					}
+				});
+				
+			});
+		
 		});
 	</script>
 </body>

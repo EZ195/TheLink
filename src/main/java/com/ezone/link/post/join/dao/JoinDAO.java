@@ -8,6 +8,9 @@ public interface JoinDAO {
 	
 	public int participateIn(
 			@Param("postId") int postId,
-			@Param("userId") int userId,
-			@Param("userNickname") String userNickname);
+			@Param("userId") int userId);
+	
+	public int getUserId(
+			@Param("postId") int postId,
+			@Param("userId") int userId);
 }

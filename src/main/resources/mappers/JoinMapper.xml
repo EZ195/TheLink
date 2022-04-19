@@ -18,7 +18,7 @@
 				#{postId}
 				,#{userId}
 				,#{userNickname}
-				,`승인 대기`
+				,"승인 대기"
 				,now()
 				,now()
 			)

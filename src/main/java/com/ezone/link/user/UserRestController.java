@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ezone.link.user.bo.UserBO;
 import com.ezone.link.user.model.User;
+import com.ezone.link.user.profile.bo.ProfileBO;
 import com.ezone.link.user.profile.model.Profile;
 
 @RestController
@@ -25,6 +26,10 @@ public class UserRestController {
 
 	@Autowired
 	private UserBO userBO;
+	
+	@Autowired
+	private ProfileBO profileBO;
+	
 	
 	@PostMapping("/sign_up")
 	public Map<String, String> signup(
@@ -69,17 +74,24 @@ public class UserRestController {
 			HttpServletRequest request) {
 				
 		User user = userBO.getUser(loginEmail, password);
-		Profile profile = new Profile();
+		
 		Map<String, String> result = new HashMap<>();
+		
 		HttpSession session = request.getSession();
 		
 		if (user != null ) {
+			
 			result.put("result", "success");
+			
+			int userId = user.getId();
+			
+			String userNickname = profileBO.getNickname(userId);
 			
 			session.setAttribute("userId", user.getId());
 			session.setAttribute("userLoginEmail", user.getLoginEmail());
-			session.setAttribute("userNickname" , profile.getNickname());
+			session.setAttribute("userNickname", userNickname);
 ;		}
+		
 		else {
 			result.put("result", "fail");
 		}
