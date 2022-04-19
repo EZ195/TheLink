@@ -14,8 +14,6 @@ public interface ProfileDAO {
 	
 	public int nicknameIsDuplicate(@Param("nickname") String nickname);
 	
-	public Profile getUserNickname(@Param("userId") int userId);
-	
 	public Profile getUserProfile(@Param("userId") int userId);
 	
 	public int updateUserProfile(

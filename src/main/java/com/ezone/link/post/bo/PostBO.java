@@ -1,5 +1,8 @@
 package com.ezone.link.post.bo;
 
+import java.sql.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +18,20 @@ public class PostBO {
 	public int addPost(Post post) {
 		return postDAO.addPost(post);
 	}
-
-
+	
+	public List<Post> getPostList() {
+		return postDAO.getPostList();
+	}
+	
+	public Post getPostDetail(int id) {
+		return postDAO.getPostDetail(id);
+	}
+	
+	public int postUpdate(int id, String title, String content, Date meetingDate, int headcount) {
+		return postDAO.postUpdate(id, title, content, meetingDate, headcount);  
+	}
+	
+	public int postDelete(int id) {
+		return postDAO.postDelete(id);
+	}
 }

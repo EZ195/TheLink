@@ -27,5 +27,48 @@
 				,now()
 			)
 	</insert>
+	<select id="getPostList" resultType="com.ezone.link.post.model.Post">
+		SELECT
+				`id`
+				,`userId`
+				,`userNickname`
+				,`title`
+				,`content`
+				,`meetingDate`
+				,`headcount`
+		FROM
+				`post`
+	</select>
+	<select id="getPostDetail" parameterType="int" resultType="com.ezone.link.post.model.Post">
+		SELECT
+				`id`
+				,`userId`
+				,`userNickname`
+				,`title`
+				,`content`
+				,`meetingDate`
+				,`headcount`
+		FROM
+				`post`
+		WHERE
+				`id` = #{id}
+	</select>
+	<update id="postUpdate" parameterType="map">
+		UPDATE
+				`post`
+		SET
+				`title` = #{title}
+				,`content` = #{content}
+				,`meetingDate` = #{meetingDate}
+				,`headcount` = #{headcount}
+		WHERE
+				`id` = #{postId}
+	</update>
+	<delete id="postDelete" parameterType="int">
+		DELETE FROM
+				`post`
+		WHERE
+				`id` = #{postId}
+	</delete>
 
 </mapper>

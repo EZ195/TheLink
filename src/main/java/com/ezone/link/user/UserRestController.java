@@ -69,7 +69,7 @@ public class UserRestController {
 			HttpServletRequest request) {
 				
 		User user = userBO.getUser(loginEmail, password);
-		
+		Profile profile = new Profile();
 		Map<String, String> result = new HashMap<>();
 		HttpSession session = request.getSession();
 		
@@ -78,6 +78,7 @@ public class UserRestController {
 			
 			session.setAttribute("userId", user.getId());
 			session.setAttribute("userLoginEmail", user.getLoginEmail());
+			session.setAttribute("userNickname" , profile.getNickname());
 ;		}
 		else {
 			result.put("result", "fail");

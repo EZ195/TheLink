@@ -12,8 +12,6 @@
 	
 	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-	
-	
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -30,6 +28,7 @@
 				<h3>${userProfile.nickname }</h3>
 				<textarea class="form-control mt-3" rows="5">${userProfile.introduce }</textarea>			
 			</div>
+			<a href="/post/create_view">글쓰기</a>
 		</section>
 		
 		<c:import url="/WEB-INF/jsp/common/footer.jsp"></c:import>

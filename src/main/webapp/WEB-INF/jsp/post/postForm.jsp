@@ -20,20 +20,55 @@
 		<section>
 			<form>
 				<h1 align="center">모임 만들기</h1>
+				
+				<!-- 제목 -->
 				<input type=text id="titleInput" placeholder="제목">
+				
+				<!-- 내용 -->
 				<textarea id="contentInput" placeholder="내용을 입력하세요"></textarea>
-				관심사 체크
-				<input type="checkbox">관심사1
-				<input type="checkbox">관심사2
-				<input type="checkbox">관심사3
-				<input type="checkbox">관심사4
+				
+				<!-- 날짜 -->
 				<input type=date id="dateInput">
+				
+				<!-- 인원 수 -->
 				<select id="headcountInput">
 					<option value="sel">인원수</option>
 					<c:forEach var="i" begin="2" end="15" step="1">
 						<option value="${i }">${i }</option>
 					</c:forEach>
 				</select>
+				
+				<!-- 관심사 -->
+				<h3>카테고리를 선택해주세요(중복체크 가능)</h3>
+				<div class="btn-group btn-group-sm mt-3">
+					<div class="form-check">
+					<h5>문화·예술</h5>
+						<input type="checkbox" class="btn-check mt-3" name="interest" id="culture1" value="culture_전시">
+					  	<label class="btn btn-outline-danger" for="culture1">전시</label>
+					
+						<input type="checkbox" class="btn-check" name="interest" id="culture2" value="culture_영화">
+						<label class="btn btn-outline-danger" for="culture2">영화</label>
+											
+						<input type="checkbox" class="btn-check" name="interest" id="culture3" value="culture_뮤지컬">
+						<label class="btn btn-outline-danger" for="culture3">뮤지컬</label>
+							
+						<input type="checkbox" class="btn-check" name="interest" id="culture4" value="culture_공연">
+						<label class="btn btn-outline-danger" for="culture4">공연</label>					
+
+						<input type="checkbox" class="btn-check" name="interest" id="culture5" value="culture_디자인">
+						<label class="btn btn-outline-danger" for="culture5">공연</label>	
+						
+						<input type="checkbox" class="btn-check" name="interest" id="culture6" value="culture_박물관">
+						<label class="btn btn-outline-danger" for="culture6">박물관</label>	
+						
+						<input type="checkbox" class="btn-check" name="interest" id="culture7" value="culture_연극">
+						<label class="btn btn-outline-danger" for="culture7">연극</label>	
+					
+						<input type="checkbox" class="btn-check" name="interest" id="culture8" value="culture_콘서트">
+						<label class="btn btn-outline-danger" for="culture8">콘서트</label>	
+					</div>
+				</div>
+				
 				<button type="button" id="createBtn">모임 만들기</button>
 			</form>
 		</section>
@@ -73,6 +108,7 @@
 					success:function(data){
 						if(data.result == "success") {
 							alert("업로드 성공");
+							location.href="/post/timeline_view";
 						}
 						else {
 							alert("업로드 실패");

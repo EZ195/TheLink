@@ -16,8 +16,6 @@ public class InterestBO {
 	private InterestDAO interestDAO;
 	
 	public int addUserInterest (int userId, List<String> userInterest) {
-		
-		System.out.println("bo" + userInterest);
 	
 		return interestDAO.addUserInterest(userId, userInterest);
 	}

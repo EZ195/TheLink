@@ -66,8 +66,9 @@ public class UserBO {
 	public User getUser(String loginEmail, String password) {
 		
 		String encryptPw = EncryptUtills.md5(password);
-		
 		return userDAO.getUser(loginEmail, encryptPw);
+		
+
 	
 	}
 }

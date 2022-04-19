@@ -6,6 +6,7 @@ public class Interest {
 	
 	private int id;
 	private int userId;
+	private String interestId;
 	private String userInterest;
 	private Date createdAt;
 	
@@ -20,6 +21,12 @@ public class Interest {
 	}
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}
+	public String getInterestId() {
+		return interestId;
+	}
+	public void setInterestId(String interestId) {
+		this.interestId = interestId;
 	}
 	public String getUserInterest() {
 		return userInterest;

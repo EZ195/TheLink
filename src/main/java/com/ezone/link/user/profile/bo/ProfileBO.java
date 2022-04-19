@@ -29,11 +29,6 @@ public class ProfileBO {
 		}
 	}
 	
-	public Profile getUserNickname(int userId) {
-		return profileDAO.getUserNickname(userId);
-		
-	}
-	
 	public Profile getUserProfile(int userId) {
 		return profileDAO.getUserProfile(userId);
 	}

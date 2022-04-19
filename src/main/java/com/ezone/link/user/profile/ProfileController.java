@@ -25,9 +25,12 @@ public class ProfileController {
 	public String profileView(HttpServletRequest request, Model model) {
 		
 		HttpSession session = request.getSession();
+
 		int userId = (Integer)session.getAttribute("userId");
 		
 		Profile userProfile = profileBO.getUserProfile(userId);
+		
+		session.setAttribute("userNickname", userProfile.getNickname());
 		
 		model.addAttribute("userProfile",userProfile);
 		
