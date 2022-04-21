@@ -45,11 +45,7 @@ public class ProfileRestController {
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
 		
-		int count = profileBO.updateProfile(userId, nickname, introduce, file);
-		
-		System.out.println(nickname);
-		System.out.println(introduce);
-		
+		int count = profileBO.updateProfile(userId, nickname, introduce, file);		
 
 		Map<String, String> result = new HashMap<>();
 		

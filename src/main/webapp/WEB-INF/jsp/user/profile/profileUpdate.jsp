@@ -21,13 +21,16 @@
 		
 		<section>
 			<div class="mb-3">
-				<img src="${userProfile.profileImagePath }"> 
+				<div class="profileBox">
+					<img class="profileImg" src="${userProfile.profileImagePath }">
+				</div>
 				<input type="file" class="mt-3" id="fileInput">
 				닉네임 <input type="text" id="updateNickname" value="${userProfile.nickname }">
 				자기 소개 <textarea class="form-control mt-3" rows="5" id="introduceInput">${userProfile.introduce }</textarea>				
 			</div>
 			<div>
-				<h3><a href="/user/profile/profile_view">취소</a></h3> <h3 class="text-primary"><a id="updateBtn" data-user-id="${userProfile.userId } href="/user/profile/profile_update">완료</a></h3>
+				<a href="/user/profile/profile_view">취소</a>
+				<a href="/user/profile/profile_update" id="updateBtn" data-user-id="${userProfile.userId }">완료</a>
 			</div>
 		</section>
 		

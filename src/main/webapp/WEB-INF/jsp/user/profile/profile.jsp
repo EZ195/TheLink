@@ -28,7 +28,6 @@
 				<h3>${userProfile.nickname }</h3>
 				<textarea class="form-control mt-3" rows="5">${userProfile.introduce }</textarea>			
 			</div>
-			<a href="/post/create_view">글쓰기</a>
 		</section>
 		
 		<c:import url="/WEB-INF/jsp/common/footer.jsp"></c:import>
