@@ -43,7 +43,7 @@ public class FileManagerService {
 			logger.error("FileManagerService-saveFile : 파일 저장 에러");
 		}
 		
-		return "/profileImage/" +directory +file.getOriginalFilename();
+		return "/profileImage/" +directoryName +file.getOriginalFilename();
 	}
 
 }

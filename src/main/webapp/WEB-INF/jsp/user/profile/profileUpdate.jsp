@@ -41,16 +41,19 @@
 				let nickname = $("#updateNickname").val();
 				let introduce = $("#introduceInput").val();
 				
-				// var formData = new formData();
-				// formData.append("nickname",nickname);
-				// formData.append("introduce",introduce);
-				// formData.append("profileImagePath",$("#fileInput")[0].files[0]);
+				var formData = new FormData();
+				formData.append("nickname",nickname);
+				formData.append("introduce",introduce);
+				formData.append("profileImagePath",$("#fileInput")[0].files[0]);
 				
 				
 				$.ajax({
 					type:"post",
 					url:"/user/profile/profile_update",
-					data:{"nickname":nickname,"introduce":introduce},
+					data:formData,
+					enctype:"multipart/form-data",
+					processData:false,
+					contentType:false,
 					success:function(data) {
 						if(data.result == "success") {
 							alert("수정 성공");
