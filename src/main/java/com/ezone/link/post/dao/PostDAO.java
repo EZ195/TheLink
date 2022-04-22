@@ -26,5 +26,7 @@ public interface PostDAO {
 			@Param("headcount") int headcount);
 	
 	public int postDelete(@Param("postId") int id);
+	
+	public int getUserId(@Param("postId") int id);
 
 }

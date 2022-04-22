@@ -70,5 +70,13 @@
 		WHERE
 				`id` = #{postId}
 	</delete>
+	<select id="getUserId" parameterType="int" resultType="int">
+		SELECT
+				`userId`
+		FROM
+				`post`
+		WHERE
+				`id` = #{postId}	
+	</select>
 
 </mapper>

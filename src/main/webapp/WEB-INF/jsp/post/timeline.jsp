@@ -20,11 +20,15 @@
 		<c:import url="/WEB-INF/jsp/common/header.jsp"/>
 		<section>
 			<div class="w-75 my-5 ">
-				<div>
-					<c:forEach var="postList" items="${postList }">
-						작성자 : ${postList.userNickname }
-						제목 : <a href="/post/detail_view?id=${postList.id }">${postList.title }</a>
-					</c:forEach>
+				<div class="table-responsive">
+					<table class="table">
+						<c:forEach var="postList" items="${postList }">
+						<tr>
+							<td>${postList.userNickname }</td>
+							<td><a href="/post/detail_view?id=${postList.id }">${postList.title }</a></td>
+						</tr>
+						</c:forEach>
+					</table>
 				</div>
 				<a href="/post/create_view">글쓰기</a>
 			</div>

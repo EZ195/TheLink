@@ -31,15 +31,15 @@
 					<c:when test="${postDetail.userId eq userId  }">
 						<a href="/post/update_view?id=${postDetail.id }">수정</a>
 						<button id="deleteBtn" type="button" data-post-id="${postDetail.id}">삭제</button>
-						<a href="/post/approve_list_view">신청자 리스트</a>
 					</c:when>
-					<c:when test="${postDetail.userId ne userId  }">
+					<c:when test="${isChecked}">
 						<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop_delete">취소하기</button>
-					</c:when>
+					</c:when >
 					<c:otherwise>
 						<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">참여 신청</button>
 					</c:otherwise>
 				</c:choose>
+				<a href="/post/join/approve_list_view?postId=${postDetail.id }">신청자 리스트</a>
 			</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/common/footer.jsp"/>
@@ -50,10 +50,25 @@
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-body">
-	      	참여하시겠습니까?
+	      	신청하시겠습니까?
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" id="joinBtn" class="btn btn-primary btn-small" data-post-id="${postDetail.id }">확인</button>
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">돌아가기</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="staticBackdrop_delete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-body">
+	      	정말 취소하시겠습니까?
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" id="deleteJoinBtn" class="btn btn-primary btn-small" data-post-id="${postDetail.id }">확인</button>
 	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">돌아가기</button>
 	      </div>
 	    </div>
@@ -90,7 +105,7 @@
 					url:"/post/join/participate",
 					data:{"postId":postId},
 					success:function(data){
-						if (data.result = "success") {
+						if (data.result == "success") {
 							alert("신청완료");
 							location.href="/post/timeline_view";
 						}
@@ -103,6 +118,28 @@
 					}
 				});
 				
+			});
+			
+			$("#deleteJoinBtn").on("click", function(){
+				
+				let postId = $(this).data("post-id");
+				
+				$.ajax({
+					type:"get",
+					url:"/post/join/cancel",
+					data:{"postId":postId},
+					success:function(data){
+						if(data.result == "success") {
+							location.reload();
+						}
+						else {
+							alert("취소 실패");
+						}
+					},
+					error:function(){
+						alert("에러 발생");
+					}
+				});
 			});
 		
 		});

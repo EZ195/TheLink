@@ -8,7 +8,6 @@
 			(
 				`postId`
 				,`userId`
-				,`userNickname`
 				,`statement`
 				,`createdAt`
 				,`updatedAt`
@@ -17,11 +16,45 @@
 			(
 				#{postId}
 				,#{userId}
-				,#{userNickname}
 				,"승인 대기"
 				,now()
 				,now()
 			)
 	
 	</insert>
+	<delete id="deleteParticipate">
+		DELETE FROM
+				`post_join`
+		WHERE
+				`userId` = #{userId}
+				AND `postId` = #{postId}
+	</delete>
+	<select id="checkApply" parameterType="map" resultType="int">
+		SELECT
+				count(*)
+		FROM
+				`post_join`
+		WHERE
+				`postId` = #{postId}
+				AND `userId` = #{userId}
+	</select>
+	<select id="getApplierList" parameterType="int" resultType="com.ezone.link.post.join.model.Join">
+		SELECT
+				`postId`
+				,`userId`
+				,`statement`
+		FROM
+				`post_join`
+		WHERE
+				`postId` = #{postId}
+	</select>
+	<update id="approve" parameterType="map">
+		UPDATE
+				`post_join`
+		SET
+				`statement` = "승인 완료"
+		WHERE
+				`userId` = #{userId}
+				AND `postId` = #{postId}
+	</update>
 </mapper>

@@ -46,6 +46,5 @@ public class ProfileBO {
 	
 	public String getNickname(int userId) {
 		return profileDAO.getNickname(userId);
-		
 	}
 }
