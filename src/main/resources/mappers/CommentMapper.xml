@@ -37,10 +37,22 @@
 				`postId` = #{postId}
 	</select>
 	
-	<update id="updateComment">
-	
+	<update id="updateComment" parameterType="map">
+		UPDATE 
+				`comment`
+		SET
+				`comment` = #{comment}
+				,`updatedAt` = now()
+		WHERE
+				`postId` = #{postId}
+				AND `userId` = #{userId} 
 	</update>
 	
-	<delete id="deleteComment">
+	<delete id="deleteComment" parameterType="map">
+		DELETE FROM
+				`comment`
+		WHERE
+				`postId` = #{postId}
+				AND `userId` = #{userId}
 	</delete>
 </mapper>

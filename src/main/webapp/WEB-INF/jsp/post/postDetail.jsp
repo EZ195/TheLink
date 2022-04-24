@@ -45,7 +45,8 @@
 			<div>
 				<hr>
 				<c:forEach var="commentList" items="${commentList }">
-				${commentList.userId } : ${commentList.comment }
+					${commentList.userId } : <input type="text" value="${commentList.comment }" id="updateCommentInput">
+					<input type="button" value="수정" id="updateCommentBtn" data-post-id="${postDetail.id }">
 				</c:forEach>
 				<hr>
 			</div>
@@ -156,8 +157,8 @@
 			
 			$("#commentBtn").on("click",function(){
 				
-				let comment = $("#commentInput").val();
 				let postId = $(this).data("post-id");
+				let comment = $("#commentInput").val();
 				
 				$.ajax({
 					type:"post",
@@ -177,6 +178,31 @@
 					error:function(){
 						alert("에러 발생");
 					}
+				});
+			});
+			
+			$("#updateCommentBtn").on("click",function(){
+				
+				let postId = $(this).data("post-id");
+				let comment = $("#updateCommentInput").val();
+				
+				$.ajax({
+					type:"get",
+					url:"/post/comment/update",
+					data:{"postId":postId,"comment":comment},
+					success:function(data){
+						if(data.result == "success") {
+							alert("수정 성공");
+							location.reload();
+						}
+						else {
+							alert("수정 실패");
+						}
+					},
+					error:function() {
+						alert("에러 발생");
+					}
+					
 				});
 			});
 		});

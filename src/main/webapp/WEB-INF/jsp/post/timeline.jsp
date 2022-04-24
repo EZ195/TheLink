@@ -19,35 +19,24 @@
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/common/header.jsp"/>
 		<section>
-			<div class="w-75 my-5 ">
-				<div class="table-responsive">
-					<table class="table">
-						<c:forEach var="postList" items="${postList }">
-						<tr>
-							<td>${postList.userNickname }</td>
-							<td><a href="/post/detail_view?id=${postList.id }">${postList.title }</a></td>
-						</tr>
-						</c:forEach>
-					</table>
-				</div>
-				<a href="/post/create_view">글쓰기</a>
-			</div>
-			<c:forEach var="postList" items="${postList }">
-				<div class="card mb-3" style="max-width: 600px;">
-			  		<div class="row g-0">
-					    <div class="col-md-2">
-					      <img src="https://i.pinimg.com/564x/ca/1e/00/ca1e00ba1e616a9a028ca1f369eeef0f.jpg" class="postImg img-fluid rounded-start">
-					    </div>
-					    <div class="col-md-8">
-					      <div class="card-body">
-					        <h5 class="card-title">${postList.title }</h5>
-					        <p class="card-text">${postList.userNickname }</p>
-					        <p class="card-text"><small class="text-muted">upload : ${postList.createdAt }</small></p>
-					      </div>
-					    </div>
-					</div>
-				</div>
-			</c:forEach>
+			<a href="/post/create_view">글쓰기</a>
+			<div class="my-3 p-3 bg-body rounded shadow-sm">
+			    <h6 class="border-bottom pb-2 mb-0">Recent updates</h6>
+			    <c:forEach var="postList" items="${postList }">
+			    <div class="d-flex text-muted pt-3">
+			      <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+			
+			      <p class="pb-3 mb-0 small lh-sm border-bottom">
+			        <strong class="d-block text-gray-dark">@${postList.userNickname }</strong>
+			        <a href="/post/detail_view?id=${postList.id }">${postList.title }</a>
+			      </p>
+			    </div>
+			    </c:forEach>
+			    
+			    <small class="d-block text-end mt-3">
+			      <a href="#">All updates</a>
+			    </small>
+			  </div>
 		</section>
 		<c:import url="/WEB-INF/jsp/common/footer.jsp"/>
 	</div>

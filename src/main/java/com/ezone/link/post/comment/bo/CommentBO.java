@@ -22,8 +22,8 @@ public class CommentBO {
 		return commentDAO.showComment(postId);
 	}
 	
-	public int updateComment() {
-		return commentDAO.updateComment();
+	public int updateComment(int postId, int userId, String comment) {
+		return commentDAO.updateComment(postId, userId, comment);
 	}
 	
 	public int deleteComment() {
