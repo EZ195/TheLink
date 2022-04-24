@@ -20,13 +20,27 @@
 		<c:import url="/WEB-INF/jsp/common/header.jsp"></c:import>
 		
 		<section>
-			<div class="mb-3">
-				<h1><a href="/user/profile/update_view"><i class="bi bi-eraser-fill"></i></a></h1>
-				<div class="profileBox">
-					<img class="profileImg" src="${userProfile.profileImagePath }"> 
-				</div>
-				<h3>${userProfile.nickname }</h3>
-				<textarea class="form-control mt-3" rows="5">${userProfile.introduce }</textarea>			
+			<div class="container mt-5">
+		   	 	<div class="row d-flex justify-content-center">
+			        <div class="col-md-7">
+			            <div class="card p-3 py-4">
+			                <div class="text-center">
+			                	<img src="${userProfile.profileImagePath }" width="100" class="rounded-circle">
+			                </div>
+			                <div class="text-center mt-3">
+			                    <h5 class="mt-2 mb-0">${userProfile.nickname }</h5>
+			                    <div class="px-4 mt-1">
+			                        <p class="fonts">${userProfile.introduce }</p>
+			                    </div>
+			                    <div class="buttons"> 
+			                    	<button class="btn btn-outline-primary px-4">Message</button> 
+			                    	<button class="btn btn-primary px-4 ms-3">Contact</button>
+			                    	<a href="/user/profile/update_view"><i class="bi bi-eraser-fill"></i></a>
+			                    </div>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
 			</div>
 		</section>
 		

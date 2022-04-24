@@ -20,17 +20,27 @@
 		<c:import url="/WEB-INF/jsp/common/header.jsp"></c:import>
 		
 		<section>
-			<div class="mb-3">
-				<div class="profileBox">
-					<img class="profileImg" src="${userProfile.profileImagePath }">
-				</div>
-				<input type="file" class="mt-3" id="fileInput">
-				닉네임 <input type="text" id="updateNickname" value="${userProfile.nickname }">
-				자기 소개 <textarea class="form-control mt-3" rows="5" id="introduceInput">${userProfile.introduce }</textarea>				
-			</div>
-			<div>
-				<a href="/user/profile/profile_view">취소</a>
-				<a href="/user/profile/profile_update" id="updateBtn" data-user-id="${userProfile.userId }">완료</a>
+			<div class="container mt-5">
+		   	 	<div class="row d-flex justify-content-center">
+			        <div class="col-md-7">
+			            <div class="card p-3 py-4">
+			                <div class="text-center">
+			                	<img src="${userProfile.profileImagePath }" width="100" class="rounded-circle">
+			                </div>
+			                <div class="text-center mt-3">
+			                	<input type="file" class="mt-3" id="fileInput">
+			                    <h5 class="mt-2 mb-0"><input type="text" id="updateNickname" value="${userProfile.nickname }"></h5>
+			                    <div class="px-4 mt-1">
+			                        <p class="fonts"><textarea class="form-control mt-3" rows="5" id="introduceInput">${userProfile.introduce }</textarea></p>
+			                    </div>
+			                    <div class="buttons"> 
+			                    	<a href="/user/profile/profile_view">취소</a>
+									<a href="/user/profile/profile_update" id="updateBtn" data-user-id="${userProfile.userId }">완료</a>
+			                    </div>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
 			</div>
 		</section>
 		

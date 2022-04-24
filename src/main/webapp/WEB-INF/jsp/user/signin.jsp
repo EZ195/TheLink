@@ -14,17 +14,32 @@
 	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
 <title>Insert title here</title>
 </head>
-<body>
+<body class="text-center">
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/common/header.jsp"/>
 		<section>
-			<div>
-				<input type="email" id=loginEmailInput placeholder="아이디">
-				<input type="password" id=pwInput placeholder="비밀번호">
-				<button type="button" id=loginBtn>로그인</button>
-				
-				<small>계정이 없다면 <a href="/user/signup_view">가입하기</a></small>
-			</div>
+		<div class="mx-5 mt-5">
+			<main class="form-signin">
+				<form>
+			    	<h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+					<div class="form-floating">
+						<input type="email" class="form-control" id="loginEmailInput" placeholder="name@example.com">
+			      		<label for="loginEmailInput">Email address</label>
+			      	</div>
+					<div class="form-floating">
+						<input type="password" class="form-control" id="pwInput" placeholder="Password">
+						<label for="pwInput">Password</label>
+					</div>
+					<div class="mb-3 mt-3">
+						<button class="w-100 btn btn-lg btn-primary" type="button" id="loginBtn">Sign in</button>
+						<label>
+						<small>계정이 없다면 <a href="/user/signup_view">가입하기</a></small>
+						</label>
+					</div>
+				</form>
+			</main>
+		</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/common/footer.jsp"/>		
 	</div>

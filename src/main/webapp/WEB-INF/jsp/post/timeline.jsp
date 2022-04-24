@@ -32,6 +32,22 @@
 				</div>
 				<a href="/post/create_view">글쓰기</a>
 			</div>
+			<c:forEach var="postList" items="${postList }">
+				<div class="card mb-3" style="max-width: 600px;">
+			  		<div class="row g-0">
+					    <div class="col-md-2">
+					      <img src="https://i.pinimg.com/564x/ca/1e/00/ca1e00ba1e616a9a028ca1f369eeef0f.jpg" class="postImg img-fluid rounded-start">
+					    </div>
+					    <div class="col-md-8">
+					      <div class="card-body">
+					        <h5 class="card-title">${postList.title }</h5>
+					        <p class="card-text">${postList.userNickname }</p>
+					        <p class="card-text"><small class="text-muted">upload : ${postList.createdAt }</small></p>
+					      </div>
+					    </div>
+					</div>
+				</div>
+			</c:forEach>
 		</section>
 		<c:import url="/WEB-INF/jsp/common/footer.jsp"/>
 	</div>

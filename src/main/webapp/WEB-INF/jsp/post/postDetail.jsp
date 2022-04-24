@@ -41,6 +41,14 @@
 				</c:choose>
 				<a href="/post/join/approve_list_view?postId=${postDetail.id }">신청자 리스트</a>
 			</div>
+			<!-- 후기 댓글 리스트 -->
+			<div>
+			
+			</div>
+			<!-- 후기 댓글 입력 -->
+			<div>
+				<input type="text" id="commentInput"> <button type="button" id="commentBtn" data-post-id="${postDetail.id}">확인</button>
+			</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/common/footer.jsp"/>
 	</div>
@@ -141,7 +149,32 @@
 					}
 				});
 			});
-		
+			
+			$("#commentBtn").on("click",function(){
+				
+				let comment = $("#commentInput").val();
+				let postId = $(this).data("post-id");
+				
+				$.ajax({
+					type:"post",
+					url:"/post/comment/create",
+					data:{"postId":postId, "comment":comment},
+					success:function(data){
+						
+						if(data.result == "success") {
+							
+							alert("등록 완료");
+							location.reload();
+						}
+						else {
+							alert("등록 실패");
+						}
+					},
+					error:function(){
+						alert("에러 발생");
+					}
+				});
+			});
 		});
 	</script>
 </body>
