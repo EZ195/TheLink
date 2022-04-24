@@ -43,7 +43,11 @@
 			</div>
 			<!-- 후기 댓글 리스트 -->
 			<div>
-			
+				<hr>
+				<c:forEach var="commentList" items="${commentList }">
+				${commentList.userId } : ${commentList.comment }
+				</c:forEach>
+				<hr>
 			</div>
 			<!-- 후기 댓글 입력 -->
 			<div>

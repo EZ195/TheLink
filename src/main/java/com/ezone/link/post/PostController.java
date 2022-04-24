@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ezone.link.post.bo.PostBO;
+import com.ezone.link.post.comment.bo.CommentBO;
+import com.ezone.link.post.comment.model.Comment;
 import com.ezone.link.post.join.bo.JoinBO;
 import com.ezone.link.post.model.Post;
 
@@ -24,6 +26,9 @@ public class PostController {
 	
 	@Autowired
 	private JoinBO joinBO;
+	
+	@Autowired
+	private CommentBO commentBO;
 	
 	@GetMapping("/create_view")
 	public String createView() {
@@ -47,6 +52,8 @@ public class PostController {
 		
 		Post post = postBO.getPostDetail(id);
 		
+		List<Comment> commentList = commentBO.showComment(id);
+		
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
 		
@@ -54,6 +61,7 @@ public class PostController {
 		
 		model.addAttribute("postDetail",post);
 		model.addAttribute("isChecked",isChecked);
+		model.addAttribute("commentList",commentList);
 		
 		return "/post/postDetail";
 		

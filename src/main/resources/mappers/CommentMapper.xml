@@ -23,8 +23,18 @@
 			)
 	</insert>
 	
-	<select id="showComment">
-	
+	<select id="showComment" parameterType="int" resultType="com.ezone.link.post.comment.model.Comment">
+		SELECT
+				`id`
+				,`postId`
+				,`userId`
+				,`comment`
+				,`createdAt`
+				,`updatedAt`
+		FROM
+				`comment`
+		WHERE
+				`postId` = #{postId}
 	</select>
 	
 	<update id="updateComment">

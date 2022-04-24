@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ezone.link.post.comment.model.Comment;
 import com.ezone.link.post.dao.PostDAO;
 import com.ezone.link.post.join.bo.JoinBO;
 import com.ezone.link.post.model.Post;
@@ -27,8 +28,7 @@ public class PostBO {
 		return postDAO.getPostList();
 	}
 	
-	public Post getPostDetail(int id) {		
-		
+	public Post getPostDetail(int id) {
 		return postDAO.getPostDetail(id);
 	}
 	

@@ -2,6 +2,7 @@ package com.ezone.link.post.comment.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.ezone.link.post.comment.model.Comment;
@@ -11,7 +12,8 @@ public interface CommentDAO {
 	
 	public int addComment(Comment comment);
 	
-	public List<Comment> showComment();
+	public List<Comment> showComment(
+			@Param("postId") int postId);
 	
 	public int updateComment();
 	

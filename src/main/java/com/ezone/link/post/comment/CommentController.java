@@ -5,8 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/post/comment")
-public class CommentController {
-	
+public class CommentController {	
 	
 
 }

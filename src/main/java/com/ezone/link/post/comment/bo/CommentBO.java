@@ -18,8 +18,8 @@ public class CommentBO {
 		return commentDAO.addComment(comment);
 	}
 	
-	public List<Comment> showComment() {
-		return commentDAO.showComment();
+	public List<Comment> showComment(int postId) {
+		return commentDAO.showComment(postId);
 	}
 	
 	public int updateComment() {
