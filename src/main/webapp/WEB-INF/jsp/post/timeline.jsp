@@ -37,6 +37,23 @@
 			      <a class="more" href="#">All updates</a>
 			    </small>
 			  </div>
+
+			<div class="my-3 p-3 bg-body rounded shadow-sm">
+			    <h6 class="border-bottom pb-2 mb-0">UserList</h6>
+			    <c:forEach var="userList" items="${userList }" begin="0" end="2">
+			    <div class="d-flex text-muted pt-3">
+			      <img src="${userList.profileImagePath }" class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32">
+			
+			      <p class="pb-3 mb-0 small lh-sm border-bottom">
+			        @<a href="/user/profile/profile_view?id=${userList.id }">${userList.nickname }</a>
+			      </p>
+			    </div>
+			    </c:forEach>
+			    
+			    <small class="d-block text-end mt-3">
+			      <a class="more" href="#">See More</a>
+			    </small>
+			  </div>
 		</section>
 		<c:import url="/WEB-INF/jsp/common/footer.jsp"/>
 	</div>

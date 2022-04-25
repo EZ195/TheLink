@@ -69,7 +69,7 @@
 					success:function(data) {
 						if(data.result == "success") {
 							alert("수정 성공");
-							location.href="/user/profile/profile_view";
+							location.href="/user/profile/profile_view?id=" + ${userId };
 						}
 						else {
 							alert("수정 실패");

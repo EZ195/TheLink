@@ -1,5 +1,7 @@
 package com.ezone.link.user.profile.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +16,8 @@ public interface ProfileDAO {
 	
 	public int nicknameIsDuplicate(@Param("nickname") String nickname);
 	
+	public int getProfileId(@Param("userId") int userId);
+	
 	public Profile getUserProfile(@Param("userId") int userId);
 	
 	public int updateUserProfile(
@@ -24,4 +28,10 @@ public interface ProfileDAO {
 	
 	public String getNickname(
 			@Param("userId") int userId);
+	
+	public List<Profile> getUserList(
+			@Param("userId") int userId);
+	
+	public Profile getProfile(
+			@Param("id") int userId);
 }

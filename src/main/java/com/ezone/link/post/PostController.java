@@ -17,6 +17,8 @@ import com.ezone.link.post.comment.bo.CommentBO;
 import com.ezone.link.post.comment.model.Comment;
 import com.ezone.link.post.join.bo.JoinBO;
 import com.ezone.link.post.model.Post;
+import com.ezone.link.user.profile.bo.ProfileBO;
+import com.ezone.link.user.profile.model.Profile;
 
 @Controller
 @RequestMapping("/post")
@@ -28,6 +30,9 @@ public class PostController {
 	private JoinBO joinBO;
 	
 	@Autowired
+	private ProfileBO profileBO;
+	
+	@Autowired
 	private CommentBO commentBO;
 	
 	@GetMapping("/create_view")
@@ -36,10 +41,19 @@ public class PostController {
 	}
 	
 	@GetMapping("/timeline_view")
-	public String timelineView(Model model) {
+	public String timelineView(
+			Model model,
+			HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
 		
 		List<Post> postList = postBO.getPostList();
+		
+		int userId = (Integer)session.getAttribute("userId");
+		List<Profile> userList = profileBO.getUserList(userId);
+		
 		model.addAttribute("postList", postList);
+		model.addAttribute("userList", userList);
 		
 		return "/post/timeline";
 	}

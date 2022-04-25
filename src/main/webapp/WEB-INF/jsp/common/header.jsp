@@ -24,7 +24,7 @@
 		<a href="/post/timeline_view"><h1>THE LINK</h1></a>
 		<c:if test="${not empty userId }">
 			${userNickname }님이 로그인 중 <a href="/user/sign_out"> 로그아웃</a>
-			<a id="profileIcon" href="/user/profile/profile_view"><i class="bi bi-person-circle"></i></a>
+			<a id="profileIcon" href="/user/profile/profile_view?id=${userId }"><i class="bi bi-person-circle"></i></a>
 		</c:if>
 	</header>
 

@@ -1,5 +1,7 @@
 package com.ezone.link.user.profile.bo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,6 +31,10 @@ public class ProfileBO {
 		}
 	}
 	
+	public int getProfileId(int userId) {
+		return profileDAO.getProfileId(userId);
+	}
+	
 	public Profile getUserProfile(int userId) {
 		return profileDAO.getUserProfile(userId);
 	}
@@ -42,6 +48,10 @@ public class ProfileBO {
 			filepath = profile.getProfileImagePath();
 		}
 		
+		else if (profile == null) {
+			filepath = FileManagerService.saveFile(userId, file);
+		}
+		
 		else {
 			FileManagerService.removeFile(profile.getProfileImagePath());
 			filepath = FileManagerService.saveFile(userId, file);
@@ -52,5 +62,16 @@ public class ProfileBO {
 	
 	public String getNickname(int userId) {
 		return profileDAO.getNickname(userId);
+	}
+	
+	public List<Profile> getUserList(int userId) {
+		return profileDAO.getUserList(userId);
+	}
+	public Profile getProfile(int id) {
+		
+		Profile profile = new Profile();
+		profile.setId(id);
+		
+		return profileDAO.getProfile(id);
 	}
 }

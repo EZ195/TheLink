@@ -39,7 +39,9 @@
 				`userId` = #{userId}
 	
 	</select>
+	<select id="getProfileId" parameterType="int" resultType="int">
 	
+	</select>
 	<select id="getUserProfile" parameterType="int" resultType="com.ezone.link.user.profile.model.Profile">
 		SELECT
 				`userId`
@@ -63,5 +65,29 @@
 		WHERE
 				`userId` = #{userId}
 	</update>
+	<select id="getUserList" parameterType="int" resultType="com.ezone.link.user.profile.model.Profile">
+		SELECT
+				`id`
+				,`userId`
+				,`nickname`
+				,`introduce`
+				,`profileImagePath`
+		FROM
+				`profile`
+		WHERE
+				`userId` not in (#{userId})
+	</select>
+	<select id="getProfile" parameterType="int" resultType="com.ezone.link.user.profile.model.Profile">
+		SELECT
+				`id`
+				,`userId`
+				,`nickname`
+				,`introduce`
+				,`profileImagePath`
+		FROM
+				`profile`
+		WHERE
+				`id` = #{id}
+	</select>
 
 </mapper>
