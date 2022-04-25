@@ -12,6 +12,7 @@
 	
 	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+	
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -21,21 +22,35 @@
 		
 		<section>
 			<div class="container mt-5">
-		   	 	<div class="row d-flex justify-content-center">
+		   	 	<div class="row d-flex justify-content-center"> 
 			        <div class="col-md-7">
 			            <div class="card p-3 py-4">
 			                <div class="text-center">
 			                	<img src="${userProfile.profileImagePath }" width="100" class="rounded-circle">
+			                    <h5 class="mt-2 mb-0">${userProfile.nickname }</h5>
+			                    <div>
+				                    <span>10</span>
+				                    <span>Followers</span>
+				                    <span>20</span>
+				                    <span>Following</span>
+			                    </div>
+			                    <c:choose>
+			                    	<c:when test="${userProfile.userId eq userId }">
+					                    <div class="buttons">
+					                    	<a href="/user/profile/update_view" class="btn btn-primary px-4 ms-3">Edit Profile</a>
+					                    </div>
+			                    	</c:when>
+			                    	<c:otherwise>
+					                    <div class="buttons">
+					                    	<button class="btn btn-primary px-4 ms-3">Follow</button>
+					                    	<button class="btn btn-primary px-4 ms-3">Message</button>
+					                    </div>
+			                    	</c:otherwise>
+			                    </c:choose>
 			                </div>
 			                <div class="text-center mt-3">
-			                    <h5 class="mt-2 mb-0">${userProfile.nickname }</h5>
 			                    <div class="px-4 mt-1">
 			                        <p class="fonts">${userProfile.introduce }</p>
-			                    </div>
-			                    <div class="buttons"> 
-			                    	<button class="btn btn-outline-primary px-4">Message</button> 
-			                    	<button class="btn btn-primary px-4 ms-3">Contact</button>
-			                    	<a href="/user/profile/update_view"><i class="bi bi-eraser-fill"></i></a>
 			                    </div>
 			                </div>
 			            </div>
@@ -46,5 +61,9 @@
 		
 		<c:import url="/WEB-INF/jsp/common/footer.jsp"></c:import>
 	</div>
+	
+	<script>
+		
+	</script>
 </body>
 </html>

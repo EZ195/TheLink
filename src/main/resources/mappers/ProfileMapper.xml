@@ -42,7 +42,8 @@
 	
 	<select id="getUserProfile" parameterType="int" resultType="com.ezone.link.user.profile.model.Profile">
 		SELECT
-				`nickname`
+				`userId`
+				,`nickname`
 				,`introduce`
 				,`profileImagePath`
 		FROM

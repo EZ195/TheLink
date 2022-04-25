@@ -16,7 +16,6 @@
 <title>Post Detail</title>
 </head>
 <body>
-	
 	<div id="wrap">
 	<c:import url="/WEB-INF/jsp/common/header.jsp"/>
 		<section>
@@ -26,7 +25,7 @@
 				날짜 : ${postDetail.meetingDate }
 				인원 수 : ${postDetail.headcount }
 			</div>
-			<div>
+			<div>  
 				<c:choose>
 					<c:when test="${postDetail.userId eq userId  }">
 						<a href="/post/update_view?id=${postDetail.id }">수정</a>
@@ -90,6 +89,7 @@
 	
 	<script>
 		$().ready(function(){
+			
 			$("#deleteBtn").on("click",function(){
 				
 				let postId = $(this).data("post-id");

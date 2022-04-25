@@ -36,10 +36,16 @@ public class ProfileBO {
 	public int updateProfile(int userId, String nickname, String introduce, MultipartFile file) {
 		
 		Profile profile = this.getUserProfile(userId);
+		String filepath = "";
 		
-		FileManagerService.removeFile(profile.getProfileImagePath());
+		if (file == null) {
+			filepath = profile.getProfileImagePath();
+		}
 		
-		String filepath = FileManagerService.saveFile(userId, file);
+		else {
+			FileManagerService.removeFile(profile.getProfileImagePath());
+			filepath = FileManagerService.saveFile(userId, file);
+		}
 		
 		return profileDAO.updateUserProfile(userId, nickname, introduce, filepath);
 	}

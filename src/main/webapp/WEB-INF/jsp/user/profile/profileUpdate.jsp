@@ -28,7 +28,7 @@
 			                	<img src="${userProfile.profileImagePath }" width="100" class="rounded-circle">
 			                </div>
 			                <div class="text-center mt-3">
-			                	<input type="file" class="mt-3" id="fileInput">
+			                	<input type="file" class="mt-3" id="fileInput" value="${userProfile.profileImagePath }">
 			                    <h5 class="mt-2 mb-0"><input type="text" id="updateNickname" value="${userProfile.nickname }"></h5>
 			                    <div class="px-4 mt-1">
 			                        <p class="fonts"><textarea class="form-control mt-3" rows="5" id="introduceInput">${userProfile.introduce }</textarea></p>
@@ -57,8 +57,7 @@
 				var formData = new FormData();
 				formData.append("nickname",nickname);
 				formData.append("introduce",introduce);
-				formData.append("profileImagePath",$("#fileInput")[0].files[0]);
-				
+				formData.append("profileImagePath",$("#fileInput")[0].files[0]);					
 				
 				$.ajax({
 					type:"post",
