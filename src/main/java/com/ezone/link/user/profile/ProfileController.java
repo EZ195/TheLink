@@ -39,6 +39,7 @@ public class ProfileController {
 		Profile userProfile = new Profile();
 		int followingCnt = 0;
 		int followerCnt = 0;
+		boolean isFollowing = followBO.isFollowing(userId, id);
 		
 		if(id == userId) {
 			userProfile = profileBO.getUserProfile(userId);
@@ -55,6 +56,7 @@ public class ProfileController {
 		model.addAttribute("userProfile",userProfile);
 		model.addAttribute("followingCnt",followingCnt);
 		model.addAttribute("followerCnt",followerCnt);
+		model.addAttribute("isFollowing",isFollowing);
 		
 		return "/user/profile/profile";
 	}

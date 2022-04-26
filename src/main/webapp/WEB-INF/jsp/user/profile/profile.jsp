@@ -43,7 +43,7 @@
 			                    	<c:otherwise>
 					                    <div class="buttons">
 					                    	<c:choose>
-					                    		<c:when test="${isFollowing}">
+					                    		<c:when test="${isFollowing }">
 							                    	<button id="unfollowBtn" data-user-id="${userProfile.userId}" class="btn btn-secondery px-4 ms-3 ">Following</button>					                    		
 					                    		</c:when>
 					                    		<c:otherwise>
@@ -71,6 +71,7 @@
 	
 	<script>
 		$().ready(function(){
+			
 			$("#followBtn").on("click",function(){
 				
 				let userId = $(this).data("user-id");
@@ -81,18 +82,40 @@
 					data:{"followeeId":userId},
 					success:function(data){
 						if(data.result == "success") {
-							alert("팔로우 완료");
+							location.reload();
 						}
 						else {
 							alert("팔로우 실패");
 						}
 					},
 					error:function(){
-						
+						alert("에러 발생");
 					}
 				});
 			});
 			
+			$("#unfollowBtn").on("click",function(){
+				
+				let userId = $(this).data("user-id");
+				
+				$.ajax({
+					type:"get",
+					url:"/user/follow/unfollow",
+					data:{"followeeId":userId},
+					success:function(data){
+						if(data.result == "success") {
+							location.reload();
+						}
+						else {
+							alert("언팔 실패");
+						}
+					},
+					error:function(){
+						alert("에러 발생");
+					}
+					
+				});
+			});
 		});
 	</script>
 </body>

@@ -21,5 +21,20 @@ public class FollowBO {
 	public int followerCount(int followeeId) {
 		return followDAO.followerCount(followeeId); 
 	}
+	
+	public boolean isFollowing(int followerId, int followeeId) {
+		int count = followDAO.isFollowing(followerId, followeeId);
+		
+		if (count == 1) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public int unfollow(int followerId, int followeeId) {
+		return followDAO.unfollow(followerId, followeeId);
+	}
 
 }

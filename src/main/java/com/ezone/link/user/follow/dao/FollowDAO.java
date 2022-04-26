@@ -12,5 +12,10 @@ public interface FollowDAO {
 	
 	public int followingCount(@Param("followerId") int followerId);
 	public int followerCount(@Param("followeeId") int followeeId);
-
+	public int isFollowing(
+			@Param("followerId") int followerId,
+			@Param("followeeId") int followeeId);
+	public int unfollow(
+			@Param("followerId") int followerId,
+			@Param("followeeId") int followeeId);
 }

@@ -36,4 +36,20 @@
 		WHERE
 				`followerId` = #{followeeId}
 	</select>
+	<select id="isFollowing" parameterType="int" resultType="int">
+		SELECT
+				count(*)
+		FROM
+				`follow`
+		WHERE
+				`followerId` = #{followerId}
+				AND `followeeId` = #{followeeId}
+	</select>
+	<delete id="unfollow" parameterType="map">
+		DELETE FROM
+				`follow`
+		WHERE
+				`followerId` = #{followerId}
+				AND `followeeId` = #{followeeId}
+	</delete>
 </mapper>
