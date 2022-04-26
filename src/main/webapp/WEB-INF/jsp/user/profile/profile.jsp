@@ -29,9 +29,9 @@
 			                	<img src="${userProfile.profileImagePath }" width="100" class="rounded-circle">
 			                    <h5 class="mt-2 mb-0">${userProfile.nickname }</h5>
 			                    <div>
-				                    <span>10</span>
+				                    <span>${followingCnt }</span>
 				                    <span>Followers</span>
-				                    <span>20</span>
+				                    <span>${followerCnt }</span>
 				                    <span>Following</span>
 			                    </div>
 			                    <c:choose>
@@ -42,7 +42,14 @@
 			                    	</c:when>
 			                    	<c:otherwise>
 					                    <div class="buttons">
-					                    	<button class="btn btn-primary px-4 ms-3">Follow</button>
+					                    	<c:choose>
+					                    		<c:when test="${isFollowing}">
+							                    	<button id="unfollowBtn" data-user-id="${userProfile.userId}" class="btn btn-secondery px-4 ms-3 ">Following</button>					                    		
+					                    		</c:when>
+					                    		<c:otherwise>
+							                    	<button id="followBtn" data-user-id="${userProfile.userId}" class="btn btn-primary px-4 ms-3 ">Follow</button>
+					                    		</c:otherwise>
+					                    	</c:choose>
 					                    	<button class="btn btn-primary px-4 ms-3">Message</button>
 					                    </div>
 			                    	</c:otherwise>
@@ -63,7 +70,30 @@
 	</div>
 	
 	<script>
-		
+		$().ready(function(){
+			$("#followBtn").on("click",function(){
+				
+				let userId = $(this).data("user-id");
+				
+				$.ajax({
+					type:"post",
+					url:"/user/follow/is_follow",
+					data:{"followeeId":userId},
+					success:function(data){
+						if(data.result == "success") {
+							alert("팔로우 완료");
+						}
+						else {
+							alert("팔로우 실패");
+						}
+					},
+					error:function(){
+						
+					}
+				});
+			});
+			
+		});
 	</script>
 </body>
 </html>

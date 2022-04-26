@@ -20,11 +20,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<header class="d-flex justify-content-center align-items-center">
-		<a href="/post/timeline_view"><h1>THE LINK</h1></a>
+	<header>
+		<div class="d-flex justify-content-center align-items-center">
+			<h1><a href="/post/timeline_view" id="thelink">THE LINK</a></h1>
+			<span class="mx-5"><a id="profileIcon" href="/user/profile/profile_view?id=${userId }"><i class="bi bi-person-circle fa-2x"></i></a></span>
+		</div>
 		<c:if test="${not empty userId }">
-			${userNickname }님이 로그인 중 <a href="/user/sign_out"> 로그아웃</a>
-			<a id="profileIcon" href="/user/profile/profile_view?id=${userId }"><i class="bi bi-person-circle"></i></a>
+			<div class="text_right mx-3">
+				<span>${userNickname }님이 로그인 중 <a href="/user/sign_out"><small class="sm"> 로그아웃</small></a></span>
+			</div>
 		</c:if>
 	</header>
 

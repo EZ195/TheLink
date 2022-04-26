@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ezone.link.user.follow.bo.FollowBO;
 import com.ezone.link.user.profile.bo.ProfileBO;
 import com.ezone.link.user.profile.model.Profile;
 
@@ -23,6 +24,9 @@ public class ProfileController {
 	@Autowired
 	private ProfileBO profileBO;
 	
+	@Autowired
+	private FollowBO followBO;
+	
 	@GetMapping("/profile_view")
 	public String profileView(
 			@RequestParam("id") int id,
@@ -32,17 +36,25 @@ public class ProfileController {
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
 		
+		Profile userProfile = new Profile();
+		int followingCnt = 0;
+		int followerCnt = 0;
+		
 		if(id == userId) {
-			Profile userProfile = profileBO.getUserProfile(userId);
-			
-			model.addAttribute("userProfile",userProfile);			
+			userProfile = profileBO.getUserProfile(userId);
+			followingCnt = followBO.followingCount(userId);
+			followerCnt = followBO.followerCount(userId);
 		}
 		
 		else if (id != userId) {
-			
-			Profile userProfile = profileBO.getUserProfile(id);
-			model.addAttribute("userProfile",userProfile);
+			userProfile = profileBO.getUserProfile(id);
+			followingCnt = followBO.followingCount(id);
+			followerCnt = followBO.followerCount(id);
 		}
+		
+		model.addAttribute("userProfile",userProfile);
+		model.addAttribute("followingCnt",followingCnt);
+		model.addAttribute("followerCnt",followerCnt);
 		
 		return "/user/profile/profile";
 	}

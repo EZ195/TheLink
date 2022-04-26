@@ -18,12 +18,13 @@
 <body>
 	<div id="wrap">
 	<c:import url="/WEB-INF/jsp/common/header.jsp"/>
-		<section>
-			<div class="w-75 my-5 ">
-				제목 : ${postDetail.title }
-				내용 : ${postDetail.content }
-				날짜 : ${postDetail.meetingDate }
-				인원 수 : ${postDetail.headcount }
+		<section class="d-flex justify-content-center">
+		<div  class="w-75 my-5 ">
+			<div>
+				<h3 class="text-center">${postDetail.title }</h3>
+				<textarea class="form-control mt-3" rows="5" id="contentInput">${postDetail.content }</textarea>
+				<span>날짜 : ${postDetail.meetingDate }</span>
+				<span>인원 수 : ${postDetail.headcount }</span>
 			</div>
 			<div>  
 				<c:choose>
@@ -53,6 +54,7 @@
 			<div>
 				<input type="text" id="commentInput"> <button type="button" id="commentBtn" data-post-id="${postDetail.id}">확인</button>
 			</div>
+		</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/common/footer.jsp"/>
 	</div>

@@ -45,6 +45,27 @@ footer {
 .postImg {
     object-fit: cover;
 }
+.text_right {
+	float: right;
+}
 
+.text_left {
+	float: left;
+}
 
+a {
+	text-decoration-line: none;
+}
+
+.bi-person-circle {
+	font-size: 50px;
+	color: white;
+}
+
+#thelink {
+	color: white;
+}
+.sm {
+	color: rgb(192, 192, 192);
+}
 

@@ -53,6 +53,7 @@
 				
 				let nickname = $("#updateNickname").val();
 				let introduce = $("#introduceInput").val();
+				let userId = ${userProfile.userId};
 				
 				var formData = new FormData();
 				formData.append("nickname",nickname);
@@ -69,7 +70,7 @@
 					success:function(data) {
 						if(data.result == "success") {
 							alert("수정 성공");
-							location.href="/user/profile/profile_view?id=" + ${userId };
+							location.href="/user/profile/profile_view?id=" + userId;
 						}
 						else {
 							alert("수정 실패");
