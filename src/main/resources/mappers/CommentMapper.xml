@@ -9,6 +9,7 @@
 			(
 				`postId`
 				,`userId`
+				,`userNickname`
 				,`comment`
 				,`createdAt`
 				,`updatedAt`
@@ -17,6 +18,7 @@
 			(
 				#{postId}
 				,#{userId}
+				,#{userNickname}
 				,#{comment}
 				,now()
 				,now()
@@ -28,6 +30,7 @@
 				`id`
 				,`postId`
 				,`userId`
+				,`userNickname`
 				,`comment`
 				,`createdAt`
 				,`updatedAt`
@@ -55,4 +58,13 @@
 				`postId` = #{postId}
 				AND `userId` = #{userId}
 	</delete>
+	
+	<update id="updateUserNickname" parameterType="map">
+		UPDATE 
+				`comment`
+		SET
+				`userNickname` = #{userNickname}
+		WHERE
+				`userId` = #{userId} 
+	</update>
 </mapper>

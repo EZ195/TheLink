@@ -8,6 +8,7 @@
 			(
 				`postId`
 				,`userId`
+				,`userNickname`
 				,`statement`
 				,`createdAt`
 				,`updatedAt`
@@ -16,6 +17,7 @@
 			(
 				#{postId}
 				,#{userId}
+				,#{userNickname}
 				,"승인 대기"
 				,now()
 				,now()
@@ -42,6 +44,7 @@
 		SELECT
 				`postId`
 				,`userId`
+				,`userNickname`
 				,`statement`
 		FROM
 				`post_join`
@@ -56,5 +59,13 @@
 		WHERE
 				`userId` = #{userId}
 				AND `postId` = #{postId}
+	</update>
+	<update id="updateUserNickname" parameterType="map">
+		UPDATE
+				`post_join`
+		SET
+				`userNickname` = #{userNickname}
+		WHERE
+				`userId` = #{userId}
 	</update>
 </mapper>

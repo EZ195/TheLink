@@ -8,13 +8,17 @@
 				`follow`
 			(
 				`followerId`
+				,`followerNickname`
 				,`followeeId`
+				,`followeeNickname`
 				,`createdAt`
 			)
 		VALUE
 			(
 				#{followerId}
+				,#{followerNickname}
 				,#{followeeId}
+				,#{followeeNickname}
 				,now()
 			)
 	</insert>
@@ -52,4 +56,20 @@
 				`followerId` = #{followerId}
 				AND `followeeId` = #{followeeId}
 	</delete>
+	<update id="updateFollowerNickname" parameterType="map">
+		UPDATE
+				`follow`
+		SET
+				`followerNickname` = #{followerNickname}
+		WHERE
+				`followerId` = #{followerId}
+	</update>
+	<update id="updateFolloweeNickname" parameterType="map">
+		UPDATE
+				`follow`
+		SET
+				`followeeNickname` = #{followeeNickname}
+		WHERE
+				`followeeId` = #{followeeId}
+	</update>
 </mapper>

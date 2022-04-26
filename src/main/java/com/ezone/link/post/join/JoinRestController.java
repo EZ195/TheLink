@@ -30,8 +30,9 @@ public class JoinRestController {
 		HttpSession session = request.getSession();
 		
 		int userId = (Integer)session.getAttribute("userId");
+		String userNickname = (String)session.getAttribute("userNickname");
 		
-		int count = joinBO.participateIn(postId, userId);
+		int count = joinBO.participateIn(postId, userId,userNickname);
 		
 		Map<String, String> result = new HashMap<>();
 		

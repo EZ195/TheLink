@@ -29,7 +29,7 @@ public class UserController {
 		
 		session.removeAttribute("userId");
 		session.removeAttribute("userLoginEmail");
-		session.removeAttribute("nickname");
+		session.removeAttribute("userNickname");
 		
 		return "redirect:/user/signin_view";
 	}

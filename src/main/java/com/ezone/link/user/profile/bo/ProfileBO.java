@@ -7,7 +7,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ezone.link.common.FileManagerService;
+import com.ezone.link.post.bo.PostBO;
+import com.ezone.link.post.comment.bo.CommentBO;
+import com.ezone.link.post.join.bo.JoinBO;
 import com.ezone.link.user.bo.UserBO;
+import com.ezone.link.user.follow.bo.FollowBO;
 import com.ezone.link.user.profile.dao.ProfileDAO;
 import com.ezone.link.user.profile.model.Profile;
 
@@ -16,6 +20,18 @@ public class ProfileBO {
 	
 	@Autowired
 	private ProfileDAO profileDAO;
+	
+	@Autowired
+	private PostBO postBO;
+	
+	@Autowired
+	private CommentBO commentBO;
+	
+	@Autowired
+	private JoinBO joinBO;
+	
+	@Autowired
+	private FollowBO followBO;
 	
 	public int addUserProfile(int userId, String nickname) {
 		return profileDAO.addUserProfile(userId, nickname);
@@ -56,6 +72,12 @@ public class ProfileBO {
 			FileManagerService.removeFile(profile.getProfileImagePath());
 			filepath = FileManagerService.saveFile(userId, file);
 		}
+		
+		postBO.updateUserNickname(userId, nickname);
+		commentBO.updateUserNickname(userId, nickname);
+		joinBO.updateUserNickname(userId, nickname);
+		followBO.updateFollowerNickname(userId, nickname);
+		followBO.updateFolloweeNickname(userId, nickname);
 		
 		return profileDAO.updateUserProfile(userId, nickname, introduce, filepath);
 	}

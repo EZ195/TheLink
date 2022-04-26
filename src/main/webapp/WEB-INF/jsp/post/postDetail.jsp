@@ -45,7 +45,7 @@
 			<div>
 				<hr>
 				<c:forEach var="commentList" items="${commentList }">
-					${commentList.userId } : <input type="text" value="${commentList.comment }" id="updateCommentInput">
+					${commentList.userNickname } : <input type="text" value="${commentList.comment }" id="updateCommentInput">
 					<input type="button" value="수정" id="updateCommentBtn" data-post-id="${postDetail.id }">
 				</c:forEach>
 				<hr>

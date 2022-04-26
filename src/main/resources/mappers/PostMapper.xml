@@ -36,8 +36,12 @@
 				,`content`
 				,`meetingDate`
 				,`headcount`
+				,`createdAt`
+				,`updatedAt`
 		FROM
 				`post`
+		ORDER BY 
+				`createdAt` DESC
 	</select>
 	<select id="getPostDetail" parameterType="int" resultType="com.ezone.link.post.model.Post">
 		SELECT
@@ -48,10 +52,12 @@
 				,`content`
 				,`meetingDate`
 				,`headcount`
+				,`createdAt`
+				,`updatedAt`
 		FROM
 				`post`
 		WHERE
-				`id` = #{id}
+				`id` = #{id}		
 	</select>
 	<update id="postUpdate" parameterType="map">
 		UPDATE
@@ -78,5 +84,13 @@
 		WHERE
 				`id` = #{postId}	
 	</select>
+	<update id="updateUserNickname" parameterType="map">
+		UPDATE
+				`post`
+		SET
+				`userNickname` = #{userNickname}
+		WHERE
+				`userId` = #{userId}
+	</update>
 
 </mapper>

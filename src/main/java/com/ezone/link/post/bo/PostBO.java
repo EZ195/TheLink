@@ -43,4 +43,8 @@ public class PostBO {
 	public int getUserId(int id) {
 		return postDAO.getUserId(id);
 	}
+	
+	public int updateUserNickname(int userId, String userNickname) {
+		return postDAO.updateUserNickname(userId, userNickname);
+	}
 }

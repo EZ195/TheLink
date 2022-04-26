@@ -29,5 +29,10 @@ public class CommentBO {
 	public int deleteComment() {
 		return commentDAO.deleteComment();
 	}
+	
+	public int updateUserNickname(int userId, String userNickname) {
+		return commentDAO.updateUserNickname(userId, userNickname);
+		
+	}
 
 }

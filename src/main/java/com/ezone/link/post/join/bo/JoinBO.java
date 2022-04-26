@@ -14,8 +14,8 @@ public class JoinBO {
 	@Autowired
 	private JoinDAO joinDAO;
 	
-	public int participateIn(int postId, int userId) {
-		return joinDAO.participateIn(postId, userId);
+	public int participateIn(int postId, int userId, String userNickname) {
+		return joinDAO.participateIn(postId, userId, userNickname);
 	}
 	
 	public int deleteParticipate(int postId, int userId) {
@@ -41,5 +41,9 @@ public class JoinBO {
 	
 	public int approve(int postId, int userId) {
 		return joinDAO.approve(postId, userId);
+	}
+	
+	public int updateUserNickname(int userId, String userNickname) {
+		return joinDAO.updateUserNickname(userId, userNickname);
 	}
 }

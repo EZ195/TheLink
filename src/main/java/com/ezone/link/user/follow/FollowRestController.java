@@ -25,13 +25,15 @@ public class FollowRestController {
 	@PostMapping("/is_follow")
 	public Map<String, String> followUser(
 			@RequestParam("followeeId") int followeeId,
+			@RequestParam("followeeNickname") String followeeNickname,
 			HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		
 		int userId = (Integer)session.getAttribute("userId");
+		String userNickname = (String)session.getAttribute("userNickname");
 		
-		int count = followBO.followUser(userId, followeeId);
+		int count = followBO.followUser(userId, userNickname, followeeId, followeeNickname);
 		
 		Map<String, String> result = new HashMap<>();
 		

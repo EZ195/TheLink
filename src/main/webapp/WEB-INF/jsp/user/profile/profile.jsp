@@ -75,11 +75,11 @@
 			$("#followBtn").on("click",function(){
 				
 				let userId = $(this).data("user-id");
-				
+				let userNickname = "${userProfile.nickname}";
 				$.ajax({
 					type:"post",
 					url:"/user/follow/is_follow",
-					data:{"followeeId":userId},
+					data:{"followeeId":userId,"followeeNickname":userNickname},
 					success:function(data){
 						if(data.result == "success") {
 							location.reload();

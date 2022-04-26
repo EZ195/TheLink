@@ -31,8 +31,10 @@ public class CommentRestComtroller {
 		HttpSession session = request.getSession();
 		
 		int userId = (Integer)session.getAttribute("userId");
+		String userNickname = (String)session.getAttribute("userNickname");
 		
 		comment.setUserId(userId);
+		comment.setUserNickname(userNickname);
 		
 		int count = commentBO.addComment(comment);
 		

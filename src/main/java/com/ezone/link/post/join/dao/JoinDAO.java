@@ -12,7 +12,8 @@ public interface JoinDAO {
 	
 	public int participateIn(
 			@Param("postId") int postId,
-			@Param("userId") int userId);
+			@Param("userId") int userId,
+			@Param("userNickname") String userNickname);
 	
 	public int deleteParticipate(
 			@Param("postId") int postId,
@@ -28,4 +29,9 @@ public interface JoinDAO {
 	public int approve(
 			@Param("postId") int postId,
 			@Param("userId") int userId);
+	
+	public int updateUserNickname(
+			@Param("userId") int userId,
+			@Param("userNickname") String userNickname);
+	
 }

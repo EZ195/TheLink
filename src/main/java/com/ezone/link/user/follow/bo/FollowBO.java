@@ -11,8 +11,8 @@ public class FollowBO {
 	@Autowired
 	private FollowDAO followDAO;
 	
-	public int followUser(int followerId, int followeeId) {
-		return followDAO.followUser(followerId, followeeId);
+	public int followUser(int followerId, String followerNickname,int followeeId, String followeeNickname) {
+		return followDAO.followUser(followerId, followerNickname, followeeId, followeeNickname);
 	}
 	
 	public int followingCount(int followerId) {
@@ -35,6 +35,13 @@ public class FollowBO {
 	
 	public int unfollow(int followerId, int followeeId) {
 		return followDAO.unfollow(followerId, followeeId);
+	}
+	
+	public int updateFollowerNickname(int followerId, String followerNickname) {
+		return followDAO.updateFollowerNickname(followerId, followerNickname);
+	}
+	public int updateFolloweeNickname(int followeeId, String followeeNickname) {
+		return followDAO.updateFolloweeNickname(followeeId, followeeNickname);
 	}
 
 }

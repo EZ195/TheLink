@@ -28,5 +28,9 @@ public interface PostDAO {
 	public int postDelete(@Param("postId") int id);
 	
 	public int getUserId(@Param("postId") int id);
+	
+	public int updateUserNickname(
+			@Param("userId") int userId,
+			@Param("userNickname") String userNickname);
 
 }

@@ -23,7 +23,7 @@
 				<table class="table">
 					<c:forEach var="applierList" items="${applierList }">
 					<tr>
-						<td>${applierList.userId }</td>
+						<td>${applierList.userNickname }</td>
 						<c:choose>
 							<c:when test="${postWriter eq userId}">
 								<c:choose>
