@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ezone.link.search.dao.SearchDAO">
+	<select id="getPostListByHashtag" parameterType="String" resultType="com.ezone.link.post.model.Post">
+		SELECT
+		
+		FROM
+				`post_interest`
+		WHERE
+		
+	</select>
+		
+	<select id="getUserListByHashtag" parameterType="String" resultType="com.ezone.link.user.profile.model.Profile">
+		SELECT
+		
+		FROM
+				`user_interst`
+		WHERE
+		
+	</select>
+	
+	<select id="getPostListByKeyword" parameterType="String" resultType="com.ezone.link.post.model.Post">
+		SELECT
+				`id`
+				,`userId`
+				,`userNickname`
+				,`title`
+				,`content`
+				,`meetingDate`
+				,`headCount`
+		FROM
+				`post`
+		WHERE
+				`title` LIKE CONCAT('%',#{keyword},'%')
+				OR `content` LIKE CONCAT('%',#{keyword},'%')
+		
+	</select>
+		
+	<select id="getUserListByKeyword" parameterType="String" resultType="com.ezone.link.user.profile.model.Profile">
+		SELECT
+				`id`
+				,`userId`
+				,`nickname`
+				,`profileImagePath`
+				,`introduce`
+		FROM
+				`profile`
+		WHERE
+				`introduce` LIKE CONCAT('%',#{keyword},'%')
+	</select>
+
+</mapper>

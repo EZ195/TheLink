@@ -102,7 +102,7 @@
 						<label class="btn btn-outline-danger" for="culture4">공연</label>					
 
 						<input type="checkbox" class="btn-check" name="interest" id="culture5" value="culture_디자인">
-						<label class="btn btn-outline-danger" for="culture5">공연</label>	
+						<label class="btn btn-outline-danger" for="culture5">디자인</label>	
 						
 						<input type="checkbox" class="btn-check" name="interest" id="culture6" value="culture_박물관">
 						<label class="btn btn-outline-danger" for="culture6">박물관</label>	
@@ -136,7 +136,7 @@
 						<label class="btn btn-outline-danger" for="activity6">헬스</label>
 						
 						<input type=checkbox class="btn-check" name="interest" id="activity7" value="클라이밍">
-						<label class="btn btn-outline-danger" for="activity7">클라이망</label>
+						<label class="btn btn-outline-danger" for="activity7">클라이밍</label>
 						
 						<input type=checkbox class="btn-check" name="interest" id="activity8" value="자전거">
 						<label class="btn btn-outline-danger" for="activity8">자전거</label>

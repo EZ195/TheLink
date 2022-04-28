@@ -7,10 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.ezone.link.common.EncryptUtills;
 import com.ezone.link.user.dao.UserDAO;
-import com.ezone.link.user.interest.bo.InterestBO;
-import com.ezone.link.user.interest.model.Interest;
 import com.ezone.link.user.model.User;
 import com.ezone.link.user.profile.bo.ProfileBO;
+import com.ezone.link.user.userInterest.bo.UserInterestBO;
 
 @Service
 public class UserBO {
@@ -19,7 +18,7 @@ public class UserBO {
 	private UserDAO userDAO;
 	
 	@Autowired
-	private InterestBO interestBO;
+	private UserInterestBO userInterestBO;
 	
 	@Autowired
 	private ProfileBO profileBO;
@@ -46,7 +45,7 @@ public class UserBO {
 		
 		userDAO.addUser(user);
 		int userId = user.getId();
-		interestBO.addUserInterest(userId, userInterest);
+		userInterestBO.addUserInterest(userId, userInterest);
 		
 		return profileBO.addUserProfile(userId, nickname); 
 	}

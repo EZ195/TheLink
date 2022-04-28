@@ -60,14 +60,17 @@ public class ProfileBO {
 		Profile profile = this.getUserProfile(userId);
 		String filepath = "";
 		
+		// 이미지 수정 없는 경우
 		if (file == null) {
 			filepath = profile.getProfileImagePath();
 		}
 		
-		else if (profile == null) {
+		// 기존 이미지 파일이 없는 경우
+		else if (profile.getProfileImagePath() == null) {
 			filepath = FileManagerService.saveFile(userId, file);
 		}
 		
+		// 기존 이미지에서 새로운 이미지로 변경하는 경우
 		else {
 			FileManagerService.removeFile(profile.getProfileImagePath());
 			filepath = FileManagerService.saveFile(userId, file);

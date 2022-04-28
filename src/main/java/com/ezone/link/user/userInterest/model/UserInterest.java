@@ -1,8 +1,8 @@
-package com.ezone.link.user.interest.model;
+package com.ezone.link.user.userInterest.model;
 
 import java.sql.Date;
 
-public class Interest {
+public class UserInterest {
 	
 	private int id;
 	private int userId;
@@ -40,8 +40,5 @@ public class Interest {
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
-	
-	
-	
 
 }

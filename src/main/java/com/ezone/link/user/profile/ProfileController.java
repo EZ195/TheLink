@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.ezone.link.user.follow.bo.FollowBO;
 import com.ezone.link.user.profile.bo.ProfileBO;
 import com.ezone.link.user.profile.model.Profile;
+import com.ezone.link.user.userInterest.bo.UserInterestBO;
 
 @Controller
 @RequestMapping("/user/profile")
@@ -26,6 +27,9 @@ public class ProfileController {
 	
 	@Autowired
 	private FollowBO followBO;
+	
+	@Autowired
+	private UserInterestBO userInterestBO;
 	
 	@GetMapping("/profile_view")
 	public String profileView(
@@ -40,23 +44,27 @@ public class ProfileController {
 		int followingCnt = 0;
 		int followerCnt = 0;
 		boolean isFollowing = followBO.isFollowing(userId, id);
+		List<String> userInterest = null;
 		
 		if(id == userId) {
 			userProfile = profileBO.getUserProfile(userId);
 			followingCnt = followBO.followingCount(userId);
 			followerCnt = followBO.followerCount(userId);
+			userInterest = userInterestBO.getUserInterest(userId);
 		}
 		
 		else if (id != userId) {
 			userProfile = profileBO.getUserProfile(id);
 			followingCnt = followBO.followingCount(id);
 			followerCnt = followBO.followerCount(id);
+			userInterest = userInterestBO.getUserInterest(id);
 		}
 		
 		model.addAttribute("userProfile",userProfile);
 		model.addAttribute("followingCnt",followingCnt);
 		model.addAttribute("followerCnt",followerCnt);
 		model.addAttribute("isFollowing",isFollowing);
+		model.addAttribute("userInterest",userInterest);
 		
 		return "/user/profile/profile";
 	}

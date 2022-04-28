@@ -59,6 +59,9 @@
 			                    <div class="px-4 mt-1">
 			                        <p class="fonts">${userProfile.introduce }</p>
 			                    </div>
+			                    <c:forEach var="userInterest" items="${userInterest }">
+			                    	<a href="#">#${userInterest }</a>
+			                    </c:forEach>
 			                </div>
 			            </div>
 			        </div>

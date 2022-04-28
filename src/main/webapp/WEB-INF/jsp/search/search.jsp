@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt"   uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +12,7 @@
 	
 	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
 <meta charset="UTF-8">
-<title>TImeLine</title> 
+<title>Insert title here</title>
 </head>
 <body>
 	<div id="wrap">
@@ -27,23 +26,18 @@
 				</div>
 			</div>
 			
-			<div class="float_right mb-3">
-			  
-			</div>
-			
 			<div class="my-3 p-3 bg-body rounded shadow-sm">
 				<div class="border-bottom pb-2 mb-0">
-				    <span>Recent updates</span>
-				    <span class="text_right"><a href="/post/create_view" ><i class="bi bi-pencil-square"></i></a></span>
+				    <span>모임 검색 결과</span>
 				</div>
 				
-			    <c:forEach var="postList" items="${postList }">
+			    <c:forEach var="postResult" items="${postResult }">
 			    <div class="d-flex text-muted pt-3">
 			      <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
 			
 			      <p class="pb-3 mb-0 small lh-sm border-bottom">
-			        <strong class="d-block text-gray-dark">@${postList.userNickname }</strong>
-			        <a href="/post/detail_view?id=${postList.id }">${postList.title }</a>
+			        <strong class="d-block text-gray-dark">@${postResult.userNickname }</strong>
+			        <a href="/post/detail_view?id=${postResult.id }">${postResult.title }</a>
 			      </p>
 			    </div>
 			    </c:forEach>
@@ -52,25 +46,32 @@
 			      <a class="more" href="#">All updates</a>
 			    </small>
 			  </div>
-
-			<div class="my-3 p-3 bg-body rounded shadow-sm">
-			    <h6 class="border-bottom pb-2 mb-0">UserList</h6>
-			   <div id="addUserList">
-			    <c:forEach var="userList" items="${userList }">
-			    <div class="d-flex text-muted pt-3">
-			      <img src="${userList.profileImagePath }" class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32">
-			      <p class="pb-3 mb-0 small lh-sm border-bottom">
-			      	<a href="/user/profile/profile_view?id=${userList.id }">@${userList.nickname }</a>
-			      </p>
-			    </div>
-			    </c:forEach>
-			   </div>
-			   
-			   		    
-			    <small class="d-block text-end mt-3">
-			      <button class="more" id="moreUser">See More</button>
-			    </small>
-			</div>
+			  
+			<c:choose>
+				<c:when test="${!empty userResult }">
+				<div class="my-3 p-3 bg-body rounded shadow-sm">
+				    <div class="border-bottom pb-2 mb-0">
+					    <span>유저 검색 결과</span>
+					</div>
+				    <c:forEach var="userResult" items="${userResult }">
+				    <div class="d-flex text-muted pt-3">
+				      <img src="${userResult.profileImagePath }" class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32">
+				
+				      <p class="pb-3 mb-0 small lh-sm border-bottom">
+				        @<a href="/user/profile/profile_view?id=${userResult.id }">${userResult.nickname }</a>
+				      </p>
+				    </div>
+				    </c:forEach>
+				    
+				    <small class="d-block text-end mt-3">
+				      <a class="more" href="#">See More</a>
+				    </small>
+				</div>
+				</c:when>
+				<c:otherwise>
+					...
+				</c:otherwise>
+			</c:choose>
 		</section>
 		<c:import url="/WEB-INF/jsp/common/footer.jsp"/>
 	</div>
@@ -82,6 +83,7 @@
 				let keyword = $("#searchInput").val();
 				
 				location.href="/search/search_view?keyword=" + keyword;
+				
 			});
 		});
 	</script>

@@ -35,7 +35,7 @@
 			                    </div>
 			                    <div class="buttons"> 
 			                    	<a href="/user/profile/profile_view">취소</a>
-									<a href="/user/profile/profile_update" id="updateBtn" data-user-id="${userProfile.userId }">완료</a>
+									<button type="button" id="updateBtn" data-user-id="${userProfile.userId }">완료</button>
 			                    </div>
 			                </div>
 			            </div>

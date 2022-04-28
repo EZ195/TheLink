@@ -45,12 +45,24 @@ footer {
 .postImg {
     object-fit: cover;
 }
-.text_right {
+.float_right {
 	float: right;
 }
 
-.text_left {
+.float_left {
 	float: left;
+}
+.float_center {
+	float: center;
+}
+.text_right {
+	text-align: right;
+}
+.text_left {
+	text-align: left;
+}
+.text_center {
+	text-align: center;
 }
 
 a {
@@ -68,4 +80,3 @@ a {
 .sm {
 	color: rgb(192, 192, 192);
 }
-
