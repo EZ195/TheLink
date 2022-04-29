@@ -11,6 +11,7 @@ public class Post {
 	private String content;
 	private Date meetingDate;
 	private int headcount;
+	private String postCategory;
 	private Date createdAt;
 	private Date updatedAt;
 	
@@ -55,6 +56,12 @@ public class Post {
 	}
 	public void setHeadcount(int headcount) {
 		this.headcount = headcount;
+	}
+	public String getPostCategory() {
+		return postCategory;
+	}
+	public void setPostCategory(String postCategory) {
+		this.postCategory = postCategory;
 	}
 	public Date getCreatedAt() {
 		return createdAt;

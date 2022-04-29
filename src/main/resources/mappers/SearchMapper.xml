@@ -5,19 +5,30 @@
 <mapper namespace="com.ezone.link.search.dao.SearchDAO">
 	<select id="getPostListByHashtag" parameterType="String" resultType="com.ezone.link.post.model.Post">
 		SELECT
+				`id`
+				,`userId`
+				,`userNickname`
+				,`title`
+				,`content`
+				,`meetingDate`
+				,`headCount`
+				,`postCategory`
 		
 		FROM
-				`post_interest`
+				`post`
 		WHERE
+				`postCategory` = #{hashtag}
 		
 	</select>
 		
-	<select id="getUserListByHashtag" parameterType="String" resultType="com.ezone.link.user.profile.model.Profile">
+	<select id="getUserListByHashtag" parameterType="String" resultType="int">
 		SELECT
+				`userId`
 		
 		FROM
-				`user_interst`
+				`user_interest`
 		WHERE
+				`userInterest` = #{hashtag}
 		
 	</select>
 	
@@ -30,6 +41,7 @@
 				,`content`
 				,`meetingDate`
 				,`headCount`
+				,`postCategory`
 		FROM
 				`post`
 		WHERE

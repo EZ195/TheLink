@@ -34,4 +34,6 @@ public interface ProfileDAO {
 	
 	public Profile getProfile(
 			@Param("id") int userId);
+	
+	public List<Profile> getUserProfileList(@Param("userIdList") List<Integer> userId);
 }

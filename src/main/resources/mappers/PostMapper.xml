@@ -12,6 +12,7 @@
 				,`content`
 				,`meetingDate`
 				,`headcount`
+				,`postCategory`
 				,`createdAt`
 				,`updatedAt`
 			)
@@ -23,6 +24,7 @@
 				,#{content}
 				,#{meetingDate}
 				,#{headcount}
+				,#{postCategory}
 				,now()
 				,now()
 			)
@@ -36,6 +38,7 @@
 				,`content`
 				,`meetingDate`
 				,`headcount`
+				,`postCategory`
 				,`createdAt`
 				,`updatedAt`
 		FROM
@@ -52,6 +55,7 @@
 				,`content`
 				,`meetingDate`
 				,`headcount`
+				,`postCategory`
 				,`createdAt`
 				,`updatedAt`
 		FROM

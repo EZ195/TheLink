@@ -89,5 +89,21 @@
 		WHERE
 				`id` = #{id}
 	</select>
+	<select id="getUserProfileList" parameterType="int" resultType="com.ezone.link.user.profile.model.Profile">
+		SELECT
+				`id`
+				,`userId`
+				,`nickname`
+				,`introduce`
+				,`profileImagePath`
+		FROM
+				`profile`
+		WHERE 
+				`userId` IN (
+		<foreach collection="userIdList" item="userId" separator=",">
+				#{userId}
+		</foreach>
+		)
+	</select>
 
 </mapper>

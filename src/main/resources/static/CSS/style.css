@@ -69,6 +69,10 @@ a {
 	text-decoration-line: none;
 }
 
+.black {
+	color: #000000;
+}
+
 .bi-person-circle {
 	font-size: 50px;
 	color: white;

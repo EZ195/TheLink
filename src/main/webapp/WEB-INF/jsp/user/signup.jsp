@@ -458,7 +458,6 @@
 				let interest = $("input[name='interest']:checked").val();
 
 				var interestList = [];
-				var interestId = [];
 				var cnt = $("input[name=interest]:checkbox:checked").length;
 				
 				// 회원가입 폼 유효성 검사

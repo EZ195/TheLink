@@ -13,6 +13,9 @@
 	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 	
+	<link href="/static/fullcalendar/main.css" rel="stylesheet">
+    <script src="/static/fullcalendar/main.js"></script>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -20,7 +23,7 @@
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/common/header.jsp"></c:import>
 		
-		<section>
+		<section>		
 			<div class="container mt-5">
 		   	 	<div class="row d-flex justify-content-center"> 
 			        <div class="col-md-7">
@@ -60,20 +63,41 @@
 			                        <p class="fonts">${userProfile.introduce }</p>
 			                    </div>
 			                    <c:forEach var="userInterest" items="${userInterest }">
-			                    	<a href="#">#${userInterest }</a>
+			                    	<a href="/search/search_view?keyword=${userInterest }">#${userInterest }</a>
 			                    </c:forEach>
 			                </div>
 			            </div>
 			        </div>
-			    </div>
+			    	<div id='calendar'></div>
+			    </div>				
 			</div>
 		</section>
 		
 		<c:import url="/WEB-INF/jsp/common/footer.jsp"></c:import>
 	</div>
 	
-	<script>
+	<script>	
 		$().ready(function(){
+			
+			var calendarEl = document.getElementById('calendar');
+	        var calendar = new FullCalendar.Calendar(calendarEl, {
+	          initialView: 'dayGridMonth',
+	          
+	        	  timeZone: 'UTC',
+	                initialView: 'dayGridMonth', // 홈페이지에서 다른 형태의 view를 확인할  수 있다.
+	                events:[ // 일정 데이터 추가 , DB의 event를 가져오려면 JSON 형식으로 변환해 events에 넣어주면된다.
+	                    {
+	                        title:'한강 나들이',
+	                        start:'2022-05-26',
+	                        end:'2022-05-28'
+	                    }
+	                ],
+	                editable: true // false로 변경 시 draggable 작동 x 
+
+
+	          
+	        });
+	        calendar.render();
 			
 			$("#followBtn").on("click",function(){
 				

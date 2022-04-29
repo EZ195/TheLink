@@ -10,10 +10,12 @@ import com.ezone.link.common.FileManagerService;
 import com.ezone.link.post.bo.PostBO;
 import com.ezone.link.post.comment.bo.CommentBO;
 import com.ezone.link.post.join.bo.JoinBO;
+import com.ezone.link.search.bo.SearchBO;
 import com.ezone.link.user.bo.UserBO;
 import com.ezone.link.user.follow.bo.FollowBO;
 import com.ezone.link.user.profile.dao.ProfileDAO;
 import com.ezone.link.user.profile.model.Profile;
+import com.ezone.link.user.userInterest.model.UserInterest;
 
 @Service
 public class ProfileBO {
@@ -32,6 +34,9 @@ public class ProfileBO {
 	
 	@Autowired
 	private FollowBO followBO;
+	
+	@Autowired
+	private SearchBO searchBO;
 	
 	public int addUserProfile(int userId, String nickname) {
 		return profileDAO.addUserProfile(userId, nickname);
@@ -98,5 +103,9 @@ public class ProfileBO {
 		profile.setId(id);
 		
 		return profileDAO.getProfile(id);
+	}
+	
+	public List<Profile> getUserProfileList(List<Integer> userId) {
+		return profileDAO.getUserProfileList(userId);
 	}
 }
