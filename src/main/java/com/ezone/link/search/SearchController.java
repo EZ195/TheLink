@@ -37,14 +37,41 @@ public class SearchController {
 		List<Integer> userId = searchBO.getUserListByHashtag(keyword);
 		
 		List<Post> postResult = searchBO.getPostListByKeyword(keyword);
-		List<Profile> userResult = searchBO.getUserListByKeyword(keyword);
 		List<Post> postHashtagResult = searchBO.getPostListByHashtag(keyword);
 		
+		for(Post post1:postHashtagResult) {
+			for(Post post2:postResult) {
+				if(post1.getId() == post2.getId()) {
+					postHashtagResult.remove(post1);
+				}
+			}
+		}
+		
+		for(Post post:postHashtagResult) {
+			postResult.add(post);
+		}
+		
+		List<Profile> userResult = searchBO.getUserListByKeyword(keyword);
 		List<Profile> userHashtagResult = null;
 		
 		if (userId.size() > 0) {
-			userHashtagResult = profileBO.getUserProfileList(userId);	
+			userHashtagResult = profileBO.getUserProfileList(userId);
+			
+			for(Profile profile1:userHashtagResult) {
+				for(Profile profile2:userResult) {
+					if(profile1.getUserId() == profile2.getUserId()) {
+						userHashtagResult.remove(profile1);
+					}
+				}
+			}
+			
+			for(Profile profile:userHashtagResult) {
+				userResult.add(profile);				
+			}
+			
 		}
+		
+		
 		
 		model.addAttribute("postResult",postResult);
 		model.addAttribute("userResult",userResult);

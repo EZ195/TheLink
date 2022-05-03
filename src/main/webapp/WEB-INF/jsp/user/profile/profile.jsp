@@ -121,7 +121,7 @@
 						</c:when>
 						<c:when test="${isValue eq false }">
 							주최한 모임이 없습니다.
-							<a href="/post/create_view" class="btn">모임 만들기</a>
+							<a href="/post/create_view" class="btn btn-primary">모임 만들기</a>
 						</c:when>
 					</c:choose>
 						   
@@ -138,14 +138,6 @@
 	
 	<script>	
 		$().ready(function(){
-			
-
-			
-			var arr = for(int i = 0; i < postList.length; i++) {
-				
-            	{title:postList.title[i]:start:postList.meetingDate[i]}
-			}
-			
 			var calendarEl = document.getElementById('calendar');
 			
 	        var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -154,10 +146,9 @@
 	        	  timeZone: 'UTC',
 	                initialView: 'dayGridMonth', // 홈페이지에서 다른 형태의 view를 확인할  수 있다.
 	                events:[ // 일정 데이터 추가 , DB의 event를 가져오려면 JSON 형식으로 변환해 events에 넣어주면된다.
-	                    
-	                	for(int i = 0; i < postList.length; i++) {
-	        				
-		                	{title:postList.title[i]:start:postList.meetingDate[i]}
+	                    {	
+	                		title: '한강',
+	                		start: '2022-05-05'
 	        			}
 	                ],
 	                editable: true // false로 변경 시 draggable 작동 x 
