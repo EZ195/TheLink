@@ -21,17 +21,21 @@
 		<c:import url="/WEB-INF/jsp/common/header.jsp"></c:import>
 		
 		<!-- content -->
-		<section>
-			<div>
+		<section class="d-flex justify-content-center">
+			<div class="col-7">
 			<h1 align="center">SIGN UP</h1>
 			<form>
 			
 				<!-- 아이디 -->
 				<div class="mb-3">
-					<input class="form-control" type="email" placeholder="아이디(이메일로 입력해주세요)" id="loginEmailInput">
+					<div class="d-flex">
+						<div class="col-6">
+						<input class="form-control" type="email" placeholder="아이디(이메일로 입력해주세요)" id="loginEmailInput">
+						</div>
+						<button type="button" class="btn btn-light col-3" id="loginEmail_duplicate">중복확인</button>
+					</div>
 					<small class="text-danger" id="loginEmailDuplication">중복된 아이디(이메일) 입니다.</small>
 					<small class="text-primary" id="loginEmailNotDuplication">사용 가능한 아이디(이메일) 입니다.</small>
-					<button type="button" class="btn btn-light" id="loginEmail_duplicate">중복확인</button>
 				</div>
 				
 				<!-- 비밀번호 -->
@@ -44,9 +48,9 @@
 				<!-- 닉네임 -->
 				<div class="mb-3">
 					<input class="form-control" type="text" placeholder="닉네임" id="nicknameInput">
+					<button type="button" class="btn btn-light" id="nickname_duplicate">중복확인</button>
 					<small class="text-danger" id="nicknameDuplication">중복된 닉네임 입니다.</small>
 					<small class="text-primary" id="nicknameNotDuplication">사용 가능한 닉네임 입니다.</small>
-					<button type="button" class="btn btn-light" id="nickname_duplicate">중복확인</button>
 				</div>
 				
 				<!-- 생년월일 -->
@@ -54,7 +58,7 @@
 					<label>생년월일</label>
 					
 					<!-- year -->
-					<select name="year" id="year" title="년도">
+					<select class="form-control" name="year" id="year" title="년도">
 						<option id="yearSel" value="sel">선택</option>
 						<c:forEach var="i" begin="1900" end="2022" step="1">
 							<option value="${i }">${i }</option>
@@ -521,7 +525,7 @@
 				
 			    $("input[name='interest']:checked").each(function(i) {
 			    	interestList.push($(this).val());
-			    });			    
+			    });	    
 
 				$.ajax({
 					type:"post",

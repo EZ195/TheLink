@@ -1,6 +1,9 @@
 package com.ezone.link.search;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,7 +39,12 @@ public class SearchController {
 		List<Post> postResult = searchBO.getPostListByKeyword(keyword);
 		List<Profile> userResult = searchBO.getUserListByKeyword(keyword);
 		List<Post> postHashtagResult = searchBO.getPostListByHashtag(keyword);
-		List<Profile> userHashtagResult = profileBO.getUserProfileList(userId);
+		
+		List<Profile> userHashtagResult = null;
+		
+		if (userId.size() > 0) {
+			userHashtagResult = profileBO.getUserProfileList(userId);	
+		}
 		
 		model.addAttribute("postResult",postResult);
 		model.addAttribute("userResult",userResult);

@@ -69,7 +69,67 @@
 			            </div>
 			        </div>
 			    	<div id='calendar'></div>
-			    </div>				
+			    </div>
+			    
+			    <!-- 내가 참여한 모임 -->
+			    <div class="my-3 p-3 bg-body rounded shadow-sm">
+					<div class="border-bottom pb-2 mb-0">
+						<span>내가 참여한 모임</span>
+					</div>
+							
+					<c:forEach var="postList" items="${postList }">
+						<div class="d-flex text-muted pt-3">			
+						<p class="pb-3 mb-0 small lh-sm border-bottom">
+							<a href="/search/search_view?keyword=${postList.postCategory }">#${postList.postCategory }</a>
+							<strong class="d-block text-gray-dark">@${postList.userNickname }</strong>
+							<a class="black" href="/post/detail_view?id=${postList.id }">${postList.title }</a>
+						</p>
+						</div>
+					</c:forEach>
+						    
+						<small class="d-block text-end mt-3">
+							<a class="more" href="#">All updates</a>
+						</small>
+				</div>
+						
+				<!-- 내가 주최한 모임 -->
+			    <div class="my-3 p-3 bg-body rounded shadow-sm">
+					<div class="border-bottom pb-2 mb-0">
+						<span>내가 주최한 모임</span>
+					</div>
+							
+					<c:set var="isValue" value="false"/>
+							
+					<c:forEach var="postList" items="${postList }">
+					<c:if test="${postList.userId eq userProfile.userId }">
+						<c:set var="isValue" value="true"/>
+					</c:if>
+					</c:forEach>
+							
+					<c:choose>
+						<c:when test="${isValue eq true}">
+							<c:forEach var="postList" items="${postList }">
+							<c:if test="${postList.userId eq userProfile.userId}">
+								<div class="d-flex text-muted pt-3">		
+								    <p class="pb-3 mb-0 small lh-sm border-bottom">
+								    <a href="/search/search_view?keyword=${postList.postCategory }">#${postList.postCategory }</a>
+								    <strong class="d-block text-gray-dark">@${postList.userNickname }</strong>
+									<a class="black" href="/post/detail_view?id=${postList.id }">${postList.title }</a>									      </p>
+							    </div>
+							</c:if>
+							</c:forEach>
+						</c:when>
+						<c:when test="${isValue eq false }">
+							주최한 모임이 없습니다.
+							<a href="/post/create_view" class="btn">모임 만들기</a>
+						</c:when>
+					</c:choose>
+						   
+					<small class="d-block text-end mt-3">
+						<a class="more" href="#">All updates</a>
+					</small>
+				</div>
+			    	
 			</div>
 		</section>
 		
@@ -79,18 +139,26 @@
 	<script>	
 		$().ready(function(){
 			
+
+			
+			var arr = for(int i = 0; i < postList.length; i++) {
+				
+            	{title:postList.title[i]:start:postList.meetingDate[i]}
+			}
+			
 			var calendarEl = document.getElementById('calendar');
+			
 	        var calendar = new FullCalendar.Calendar(calendarEl, {
 	          initialView: 'dayGridMonth',
 	          
 	        	  timeZone: 'UTC',
 	                initialView: 'dayGridMonth', // 홈페이지에서 다른 형태의 view를 확인할  수 있다.
 	                events:[ // 일정 데이터 추가 , DB의 event를 가져오려면 JSON 형식으로 변환해 events에 넣어주면된다.
-	                    {
-	                        title:'한강 나들이',
-	                        start:'2022-05-26',
-	                        end:'2022-05-28'
-	                    }
+	                    
+	                	for(int i = 0; i < postList.length; i++) {
+	        				
+		                	{title:postList.title[i]:start:postList.meetingDate[i]}
+	        			}
 	                ],
 	                editable: true // false로 변경 시 draggable 작동 x 
 

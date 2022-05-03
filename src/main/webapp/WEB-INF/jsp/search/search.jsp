@@ -28,7 +28,7 @@
 			
 			<div class="my-3 p-3 bg-body rounded shadow-sm">
 				<div class="border-bottom pb-2 mb-0">
-				    <span>모임 검색 결과</span>
+				    <span>모임 검색 결과1</span>
 				</div>
 				
 			    <c:forEach var="postResult" items="${postResult }">
@@ -49,7 +49,7 @@
 			  
 			<div class="my-3 p-3 bg-body rounded shadow-sm">
 				<div class="border-bottom pb-2 mb-0">
-				    <span>모임 검색 결과</span>
+				    <span>모임 해쉬검색 결과</span>
 				</div>
 				
 			    <c:forEach var="postHashtagResult" items="${postHashtagResult }">
@@ -98,7 +98,7 @@
 				<c:when test="${!empty userHashtagResult }">
 				<div class="my-3 p-3 bg-body rounded shadow-sm">
 				    <div class="border-bottom pb-2 mb-0">
-					    <span>유저 검색 결과</span>
+					    <span>유저 해쉬검색 결과</span>
 					</div>
 				    <c:forEach var="userHashtagResult" items="${userHashtagResult }">
 				    <div class="d-flex text-muted pt-3">
