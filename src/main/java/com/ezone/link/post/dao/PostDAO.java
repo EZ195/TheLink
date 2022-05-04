@@ -32,5 +32,7 @@ public interface PostDAO {
 	public int updateUserNickname(
 			@Param("userId") int userId,
 			@Param("userNickname") String userNickname);
+	
+	public Post userJoinedPostList(@Param("postId") int postId);
 
 }

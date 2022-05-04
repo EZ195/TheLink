@@ -1,11 +1,12 @@
 package com.ezone.link.user.profile;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,10 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ezone.link.post.bo.PostBO;
+import com.ezone.link.post.join.bo.JoinBO;
+import com.ezone.link.post.join.model.Join;
 import com.ezone.link.post.model.Post;
 import com.ezone.link.user.follow.bo.FollowBO;
 import com.ezone.link.user.profile.bo.ProfileBO;
 import com.ezone.link.user.profile.model.Profile;
+import com.ezone.link.user.profile.model.ProfileJoinPost;
 import com.ezone.link.user.userInterest.bo.UserInterestBO;
 
 @Controller
@@ -36,6 +40,9 @@ public class ProfileController {
 	@Autowired
 	private PostBO postBO;
 	
+	@Autowired
+	private JoinBO joinBO;
+	
 	@GetMapping("/profile_view")
 	public String profileView(
 			@RequestParam("id") int id,
@@ -49,7 +56,7 @@ public class ProfileController {
 		int followingCnt = 0;
 		int followerCnt = 0;
 		boolean isFollowing = followBO.isFollowing(userId, id);
-		List<String> userInterest = null;
+		List<String> userInterest = new ArrayList<>();		
 		
 		if(id == userId) {
 			userProfile = profileBO.getUserProfile(userId);
@@ -57,15 +64,13 @@ public class ProfileController {
 			followerCnt = followBO.followerCount(userId);
 			userInterest = userInterestBO.getUserInterest(userId);
 			
-			
-			
 		}
 		
 		else if (id != userId) {
 			userProfile = profileBO.getUserProfile(id);
 			followingCnt = followBO.followingCount(id);
 			followerCnt = followBO.followerCount(id);
-			userInterest = userInterestBO.getUserInterest(id);
+			userInterest = userInterestBO.getUserInterest(id);		
 		}
 		
 		List<Post> postList = postBO.getPostList();
@@ -76,7 +81,6 @@ public class ProfileController {
 		model.addAttribute("isFollowing",isFollowing);
 		model.addAttribute("userInterest",userInterest);
 		model.addAttribute("postList",postList);
-	
 		
 		return "/user/profile/profile";
 	}

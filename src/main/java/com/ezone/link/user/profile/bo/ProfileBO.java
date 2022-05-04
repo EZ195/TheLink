@@ -1,5 +1,6 @@
 package com.ezone.link.user.profile.bo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +11,13 @@ import com.ezone.link.common.FileManagerService;
 import com.ezone.link.post.bo.PostBO;
 import com.ezone.link.post.comment.bo.CommentBO;
 import com.ezone.link.post.join.bo.JoinBO;
+import com.ezone.link.post.join.model.Join;
+import com.ezone.link.post.model.Post;
 import com.ezone.link.search.bo.SearchBO;
 import com.ezone.link.user.follow.bo.FollowBO;
 import com.ezone.link.user.profile.dao.ProfileDAO;
 import com.ezone.link.user.profile.model.Profile;
+import com.ezone.link.user.profile.model.ProfileJoinPost;
 
 @Service
 public class ProfileBO {
@@ -50,11 +54,29 @@ public class ProfileBO {
 		}
 	}
 	
-	public int getProfileId(int userId) {
+	public int getProfileId(int userId) {		
 		return profileDAO.getProfileId(userId);
 	}
 	
 	public Profile getUserProfile(int userId) {
+		
+		ProfileJoinPost profileJoinPost = new ProfileJoinPost();
+		
+		List<Post> userJoinedPostList = postBO.userJoinedPostList(userId);
+		List<Join> userJoinedStatement = joinBO.joinList(userId);
+		
+		List<ProfileJoinPost> joinedList = new ArrayList<>();
+
+		for(Post post:userJoinedPostList) {
+			
+			for(Join join:userJoinedStatement) {
+				String statement = join.getStatement();
+				profileJoinPost.setStatement(statement);
+			}
+			profileJoinPost.setPost(post);	
+			joinedList.add(profileJoinPost);
+		}		
+		
 		return profileDAO.getUserProfile(userId);
 	}
 	
@@ -95,6 +117,7 @@ public class ProfileBO {
 	public List<Profile> getUserList(int userId) {
 		return profileDAO.getUserList(userId);
 	}
+	
 	public Profile getProfile(int id) {
 		
 		Profile profile = new Profile();

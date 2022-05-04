@@ -96,5 +96,22 @@
 		WHERE
 				`userId` = #{userId}
 	</update>
+	<select id="userJoinedPostList" parameterType="int" resultType="com.ezone.link.post.model.Post">
+		SELECT
+				`id`
+				,`userId`
+				,`userNickname`
+				,`title`
+				,`content`
+				,`meetingDate`
+				,`headcount`
+				,`postCategory`
+				,`createdAt`
+				,`updatedAt`
+		FROM
+				`post`
+		WHERE
+				`id` = #{postId}
+	</select>
 
 </mapper>

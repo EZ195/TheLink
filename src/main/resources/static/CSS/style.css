@@ -84,3 +84,9 @@ a {
 .sm {
 	color: rgb(192, 192, 192);
 }
+.postShow {
+	display: none;
+}
+.userShow {
+	display: none;
+}

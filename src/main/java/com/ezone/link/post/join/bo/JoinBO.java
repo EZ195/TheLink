@@ -46,4 +46,9 @@ public class JoinBO {
 	public int updateUserNickname(int userId, String userNickname) {
 		return joinDAO.updateUserNickname(userId, userNickname);
 	}
+	
+	public List<Join> joinList(int userId) {
+		return joinDAO.joinList(userId);
+	}
+	
 }

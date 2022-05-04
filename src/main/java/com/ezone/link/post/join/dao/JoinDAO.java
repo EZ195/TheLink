@@ -34,4 +34,8 @@ public interface JoinDAO {
 			@Param("userId") int userId,
 			@Param("userNickname") String userNickname);
 	
+	public List<Join> joinList(
+			@Param("userId") int userId);
+	
+	
 }

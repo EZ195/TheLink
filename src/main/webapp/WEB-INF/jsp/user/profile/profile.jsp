@@ -23,7 +23,8 @@
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/common/header.jsp"></c:import>
 		
-		<section>		
+		<section>
+		
 			<div class="container mt-5">
 		   	 	<div class="row d-flex justify-content-center"> 
 			        <div class="col-md-7">
@@ -76,21 +77,33 @@
 					<div class="border-bottom pb-2 mb-0">
 						<span>내가 참여한 모임</span>
 					</div>
-							
-					<c:forEach var="postList" items="${postList }">
-						<div class="d-flex text-muted pt-3">			
-						<p class="pb-3 mb-0 small lh-sm border-bottom">
-							<a href="/search/search_view?keyword=${postList.postCategory }">#${postList.postCategory }</a>
-							<strong class="d-block text-gray-dark">@${postList.userNickname }</strong>
-							<a class="black" href="/post/detail_view?id=${postList.id }">${postList.title }</a>
-						</p>
-						</div>
-					</c:forEach>
-						    
+					
+					<table class="table">
+					  <thead>
+					    <tr>
+					      <th scope="col">#</th>
+					      <th scope="col">Title</th>
+					      <th scope="col">Statement</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  <c:forEach var="joinedList" items="${joinedList }">
+					    <tr>
+					      <th scope="row">-</th>
+					      <td>${joinedList.post.title }</td>
+					      <td>${joinedList.statement }</td>
+					    </tr>
+					 </c:forEach>  
+					  </tbody>
+					</table>
+					
+					    
 						<small class="d-block text-end mt-3">
 							<a class="more" href="#">All updates</a>
 						</small>
-				</div>
+			
+					
+				</div>	
 						
 				<!-- 내가 주최한 모임 -->
 			    <div class="my-3 p-3 bg-body rounded shadow-sm">
@@ -108,16 +121,28 @@
 							
 					<c:choose>
 						<c:when test="${isValue eq true}">
-							<c:forEach var="postList" items="${postList }">
-							<c:if test="${postList.userId eq userProfile.userId}">
-								<div class="d-flex text-muted pt-3">		
-								    <p class="pb-3 mb-0 small lh-sm border-bottom">
-								    <a href="/search/search_view?keyword=${postList.postCategory }">#${postList.postCategory }</a>
-								    <strong class="d-block text-gray-dark">@${postList.userNickname }</strong>
-									<a class="black" href="/post/detail_view?id=${postList.id }">${postList.title }</a>									      </p>
+								<div class="d-flex text-muted pt-3">
+									<table class="table">
+									<thead>
+									    <tr>
+									      <th scope="col">#</th>
+									      <th scope="col">Title</th>
+									      <th scope="col">category</th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach var="postList" items="${postList }">
+										<c:if test="${postList.userId eq userProfile.userId}">
+													<tr>
+														<th scope="row">-</th>
+														<td><a class="black" href="/post/detail_view?id=${postList.id }">${postList.title }</a></td>
+														<td><a href="/search/search_view?keyword=${postList.postCategory }">#${postList.postCategory }</a></td>
+													</tr>
+										</c:if>
+										</c:forEach>
+									</tbody>
+									</table>		
 							    </div>
-							</c:if>
-							</c:forEach>
 						</c:when>
 						<c:when test="${isValue eq false }">
 							주최한 모임이 없습니다.
@@ -131,6 +156,7 @@
 				</div>
 			    	
 			</div>
+		
 		</section>
 		
 		<c:import url="/WEB-INF/jsp/common/footer.jsp"></c:import>
@@ -138,25 +164,20 @@
 	
 	<script>	
 		$().ready(function(){
-			var calendarEl = document.getElementById('calendar');
-			
-	        var calendar = new FullCalendar.Calendar(calendarEl, {
-	          initialView: 'dayGridMonth',
-	          
-	        	  timeZone: 'UTC',
-	                initialView: 'dayGridMonth', // 홈페이지에서 다른 형태의 view를 확인할  수 있다.
-	                events:[ // 일정 데이터 추가 , DB의 event를 가져오려면 JSON 형식으로 변환해 events에 넣어주면된다.
-	                    {	
-	                		title: '한강',
-	                		start: '2022-05-05'
-	        			}
-	                ],
-	                editable: true // false로 변경 시 draggable 작동 x 
 
-
-	          
-	        });
-	        calendar.render();
+	        var calendarEl = document.getElementById('calendar');
+           	var calendar = new FullCalendar.Calendar(calendarEl, {
+                timeZone: 'UTC',
+                initialView: 'dayGridMonth', // 홈페이지에서 다른 형태의 view를 확인할  수 있다.
+                events:[ // 일정 데이터 추가 , DB의 event를 가져오려면 JSON 형식으로 변환해 events에 넣어주면된다.
+                    {
+                        title:'일정',
+                        start:'2022-05-26'
+                    }
+                ],
+                editable: true // false로 변경 시 draggable 작동 x 
+            });
+            calendar.render();	        
 			
 			$("#followBtn").on("click",function(){
 				
@@ -205,4 +226,5 @@
 		});
 	</script>
 </body>
+
 </html>
