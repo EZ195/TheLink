@@ -31,7 +31,7 @@
 			            <div class="card p-3 py-4">
 			                <div class="text-center">
 			                	<img src="${userProfile.profileImagePath }" width="100" class="rounded-circle">
-			                    <h5 class="mt-2 mb-0">${userProfile.nickname }</h5>
+			                    <h5 id="nickname" class="mt-2 mb-0">${userProfile.nickname }</h5>
 			                    <div>
 				                    <span>${followingCnt }</span>
 				                    <span>Followers</span>
@@ -90,13 +90,12 @@
 					  <c:forEach var="joinedList" items="${joinedList }">
 					    <tr>
 					      <th scope="row">-</th>
-					      <td>${joinedList.post.title }</td>
+					      <td><a class="black" href="/post/detail_view?id=${joinedList.post.id }">${joinedList.post.title }</a></td>
 					      <td>${joinedList.statement }</td>
 					    </tr>
 					 </c:forEach>  
 					  </tbody>
 					</table>
-					
 					    
 						<small class="d-block text-end mt-3">
 							<a class="more" href="#">All updates</a>
@@ -182,7 +181,8 @@
 			$("#followBtn").on("click",function(){
 				
 				let userId = $(this).data("user-id");
-				let userNickname = "${userProfile.nickname}";
+				let userNickname = $("#nickname").text();
+				
 				$.ajax({
 					type:"post",
 					url:"/user/follow/is_follow",

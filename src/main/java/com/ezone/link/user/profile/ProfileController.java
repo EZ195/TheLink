@@ -56,21 +56,24 @@ public class ProfileController {
 		int followingCnt = 0;
 		int followerCnt = 0;
 		boolean isFollowing = followBO.isFollowing(userId, id);
-		List<String> userInterest = new ArrayList<>();		
+		List<String> userInterest = new ArrayList<>();
+		
+		List<ProfileJoinPost> joinedList = new ArrayList<>();
 		
 		if(id == userId) {
 			userProfile = profileBO.getUserProfile(userId);
 			followingCnt = followBO.followingCount(userId);
 			followerCnt = followBO.followerCount(userId);
 			userInterest = userInterestBO.getUserInterest(userId);
-			
+			joinedList = postBO.userJoinedPostList(userId);
 		}
 		
 		else if (id != userId) {
 			userProfile = profileBO.getUserProfile(id);
 			followingCnt = followBO.followingCount(id);
 			followerCnt = followBO.followerCount(id);
-			userInterest = userInterestBO.getUserInterest(id);		
+			userInterest = userInterestBO.getUserInterest(id);
+			joinedList = postBO.userJoinedPostList(id);
 		}
 		
 		List<Post> postList = postBO.getPostList();
@@ -81,6 +84,7 @@ public class ProfileController {
 		model.addAttribute("isFollowing",isFollowing);
 		model.addAttribute("userInterest",userInterest);
 		model.addAttribute("postList",postList);
+		model.addAttribute("joinedList",joinedList);
 		
 		return "/user/profile/profile";
 	}

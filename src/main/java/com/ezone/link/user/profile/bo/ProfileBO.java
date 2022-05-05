@@ -59,24 +59,6 @@ public class ProfileBO {
 	}
 	
 	public Profile getUserProfile(int userId) {
-		
-		ProfileJoinPost profileJoinPost = new ProfileJoinPost();
-		
-		List<Post> userJoinedPostList = postBO.userJoinedPostList(userId);
-		List<Join> userJoinedStatement = joinBO.joinList(userId);
-		
-		List<ProfileJoinPost> joinedList = new ArrayList<>();
-
-		for(Post post:userJoinedPostList) {
-			
-			for(Join join:userJoinedStatement) {
-				String statement = join.getStatement();
-				profileJoinPost.setStatement(statement);
-			}
-			profileJoinPost.setPost(post);	
-			joinedList.add(profileJoinPost);
-		}		
-		
 		return profileDAO.getUserProfile(userId);
 	}
 	

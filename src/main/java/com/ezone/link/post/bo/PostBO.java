@@ -11,6 +11,7 @@ import com.ezone.link.post.dao.PostDAO;
 import com.ezone.link.post.join.bo.JoinBO;
 import com.ezone.link.post.join.model.Join;
 import com.ezone.link.post.model.Post;
+import com.ezone.link.user.profile.model.ProfileJoinPost;
 
 @Service
 public class PostBO {
@@ -49,14 +50,23 @@ public class PostBO {
 		return postDAO.updateUserNickname(userId, userNickname);
 	}
 	
-	public List<Post> userJoinedPostList(int userId) {
+	public List<ProfileJoinPost> userJoinedPostList(int userId) {
 		
 		List<Join> joinList = joinBO.joinList(userId);
-		List<Post> joinedPostList = new ArrayList<>();
+		List<ProfileJoinPost> joinedPostList = new ArrayList<>();
+		
 		for(Join join: joinList) {
+			
+			String statement = join.getStatement();
 			int postId = join.getPostId();
 			Post post =  postDAO.userJoinedPostList(postId);
-			joinedPostList.add(post);
+			
+			ProfileJoinPost profileJoinPost = new ProfileJoinPost();
+			
+			profileJoinPost.setPost(post);
+			profileJoinPost.setStatement(statement);
+			
+			joinedPostList.add(profileJoinPost);
 		}
 		
 		return joinedPostList;
