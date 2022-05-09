@@ -4,44 +4,46 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-
-	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		
 	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
 <title>Insert title here</title>
 </head>
-<body class="text-center">
-	<div id="wrap">
-		<c:import url="/WEB-INF/jsp/common/header.jsp"/>
+<body>
+	<div class="wrap">
 		<section>
-		<div class="mx-5 mt-5">
-			<main class="form-signin">
-				<form>
-			    	<h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
-					<div class="form-floating">
-						<input type="email" class="form-control" id="loginEmailInput" placeholder="name@example.com">
-			      		<label for="loginEmailInput">Email address</label>
-			      	</div>
-					<div class="form-floating">
-						<input type="password" class="form-control" id="pwInput" placeholder="Password">
-						<label for="pwInput">Password</label>
-					</div>
-					<div class="mb-3 mt-3">
-						<button class="w-100 btn btn-lg btn-primary" type="button" id="loginBtn">Sign in</button>
-						<label>
-						<small>계정이 없다면 <a href="/user/signup_view">가입하기</a></small>
-						</label>
-					</div>
-				</form>
-			</main>
-		</div>
+			<div class="signIn-container text_center">
+				<div class="sign-in">
+					<img class="logoImg" alt="link_logo" src="/static/img/linkLogo.png">
+					<p class="my-3">취미를 통해 세상과 연결하는 고리</p>
+			    	<img class="thelinklogoImg" alt="thelink_logo" src="/static/img/thelinkLogo.png">
+				</div>
+				<div class="sign-in">
+					<form class="form-control">
+						<h5 class="my-3">로그인 해주세요</h5>
+						<div class="mx-3 my-3">
+							<input type="email" class="form-control" id="loginEmailInput" placeholder="name@example.com">
+				      	</div>
+						<div class="mx-3 my-3">
+							<input type="password" class="form-control" id="pwInput" placeholder="password">
+						</div>
+						<div class="mb-3 mt-3 my-3 mx-3">
+							<button class="w-100 btn btn-lg btn-primary" type="button" id="loginBtn">Sign in</button>
+							<label class="my-3">
+							<small>계정이 없다면 <a href="/user/signup_view">가입하기</a></small>
+							</label>
+						</div>
+					</form>
+				</div>
+			</div>
 		</section>
-		<c:import url="/WEB-INF/jsp/common/footer.jsp"/>		
+		<c:import url="/WEB-INF/jsp/common/footer.jsp"/>
 	</div>
 	
 	<script>
@@ -66,7 +68,6 @@
 					data:{"loginEmail":loginEmail,"password":password},
 					success:function(data){
 						if(data.result == "success") {
-							alert("로그인 성공");
 							location.href="/post/timeline_view";
 						}
 						else {

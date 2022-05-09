@@ -1,22 +1,60 @@
 @charset "UTF-8";
 
-#wrap {
-	width:900px;
-	height:1000px;
-	margin:auto;
-}
-
 header {
 	font-family: 'Oswald', sans-serif;
-	height:100px;
-	background-color:#515bd4;
-	color:white;
+	height:60px;
+	background-color: #fdfdff;
+	color: black;
 }
 
 footer {
-	height:50px;
-	background-color:#515bd4;
-	color:white;
+	height:30px;
+	background-color: #fdfdff;
+	color:black;
+}
+
+.wrap {
+    width: 1000px;
+    margin: auto;
+}
+
+.container {
+	display: flex;
+	justify-content: space-around;
+}
+
+.signIn-container {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 1000px;
+	height: 600px;
+	background-color: rgb(253, 253, 255);
+}
+
+.signUp-container {
+	display: flex;
+	justify-content: space-around;
+	width: 1000px;
+	background-color: rgb(253, 253, 255);
+}
+
+.logoImg{
+	width: 80%;
+    height: 80%;
+}
+
+.thelinklogoImg{
+	width: 30%;
+    height: 30%;
+}
+
+.sign-in {
+	width: 400px;
+}
+
+.sign-up {
+	width: 800px;
 }
 
 #loginEmailDuplication {
