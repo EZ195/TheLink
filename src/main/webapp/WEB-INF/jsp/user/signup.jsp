@@ -40,7 +40,7 @@
 		
 						</div>
 						
-						<!-- 닉네임 -->
+						<!-- 닉네임  -->
 						<div class="mb-3">
 							<div class="d-flex">
 								<input class="form-control" type="text" placeholder="닉네임" id="nicknameInput">
