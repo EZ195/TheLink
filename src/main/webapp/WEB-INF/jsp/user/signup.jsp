@@ -33,7 +33,7 @@
 							<small class="text-primary" id="loginEmailNotDuplication">사용 가능한 아이디(이메일) 입니다.</small>
 						</div>
 						
-						<!-- 비밀번호 -->
+						<!-- 비밀번호  -->
 						<div class="mb-3">
 							<input class="form-control" type="password" placeholder="비밀번호" id="passwordInput">
 							<input class="form-control" type="password" placeholder="비밀번호 확인" id=passwordCheck>
