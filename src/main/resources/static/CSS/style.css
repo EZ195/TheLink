@@ -4,13 +4,13 @@ header {
 	font-family: 'Oswald', sans-serif;
 	height:60px;
 	background-color: #fdfdff;
-	color: black;
+	color: #000000;
 }
 
 footer {
 	height:30px;
 	background-color: #fdfdff;
-	color:black;
+	color: #000000;
 }
 
 .wrap {
@@ -84,40 +84,7 @@ footer {
 .postImg {
     object-fit: cover;
 }
-
-.float_right {
-	float: right;
-}
-
-.float_left {
-	float: left;
-}
-.float_center {
-	float: center;
-}
-.text_right {
-	text-align: right;
-}
-.text_left {
-	text-align: left;
-}
-.text_center {
-	text-align: center;
-}
-
-a {
-	text-decoration-line: none;
-	color: #000000;
-}
-
-.black {
-	color: #000000;
-}
-
-#propfileIcon {
-	font-size: 30px;
-	color: #000000;
-}
+  
 
 .sm {
 	color: rgb(192, 192, 192);
