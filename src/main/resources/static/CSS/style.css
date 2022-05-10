@@ -80,9 +80,11 @@ footer {
     height: 100%;
     object-fit: cover;
 }
+
 .postImg {
     object-fit: cover;
 }
+
 .float_right {
 	float: right;
 }
@@ -105,20 +107,18 @@ footer {
 
 a {
 	text-decoration-line: none;
+	color: #000000;
 }
 
 .black {
 	color: #000000;
 }
 
-.bi-person-circle {
-	font-size: 50px;
-	color: white;
+#propfileIcon {
+	font-size: 30px;
+	color: #000000;
 }
 
-#thelink {
-	color: white;
-}
 .sm {
 	color: rgb(192, 192, 192);
 }
