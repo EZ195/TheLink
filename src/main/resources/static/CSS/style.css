@@ -18,11 +18,6 @@ footer {
     margin: auto;
 }
 
-.container {
-	display: flex;
-	justify-content: space-around;
-}
-
 .signIn-container {
 	display: flex;
 	justify-content: space-around;
@@ -40,8 +35,8 @@ footer {
 }
 
 .logoImg{
-	width: 80%;
-    height: 80%;
+	width: 110%;
+    height: 110%;
 }
 
 .thelinklogoImg{
