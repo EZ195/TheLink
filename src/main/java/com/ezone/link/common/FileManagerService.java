@@ -12,12 +12,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class FileManagerService {
 	
-<<<<<<< HEAD
 	public final static String FILE_UPLOAD_PATH = "/home/ec2-user/thelink/upload/images";
-=======
-	public final static String FILE_UPLOAD_PATH = "/usr/local/tomcat/webapps/manager/images";
->>>>>>> master
-	
+
 	private static Logger logger = LoggerFactory.getLogger(FileManagerService.class);
 	
 	public static String saveFile(int userId, MultipartFile file) {
