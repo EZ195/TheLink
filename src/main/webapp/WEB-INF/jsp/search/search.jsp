@@ -77,6 +77,17 @@
 	
 	<script>
 		$().ready(function(){
+			
+			var postresult = ${postResult};
+			
+			if (postresult eq null) {
+				console.log("null 아님");
+			}
+			else {
+				console.log("null");
+			}
+		
+			
 			$("#searchBtn").on("click",function(){
 				
 				let keyword = $("#searchInput").val();

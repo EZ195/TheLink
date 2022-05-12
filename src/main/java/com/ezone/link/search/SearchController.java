@@ -39,10 +39,13 @@ public class SearchController {
 		List<Post> postResult = searchBO.getPostListByKeyword(keyword);
 		List<Post> postHashtagResult = searchBO.getPostListByHashtag(keyword);
 		
-		for(Post post1:postHashtagResult) {
+		// 추후에 BO에 작성할 예정
+		Iterator<Post> iter = postHashtagResult.iterator();
+		while (iter.hasNext()) {
+			Post post1 = iter.next();
 			for(Post post2:postResult) {
 				if(post1.getId() == post2.getId()) {
-					postHashtagResult.remove(post1);
+					iter.remove();
 				}
 			}
 		}
@@ -71,12 +74,9 @@ public class SearchController {
 			
 		}
 		
-		
-		
+	
 		model.addAttribute("postResult",postResult);
 		model.addAttribute("userResult",userResult);
-		model.addAttribute("postHashtagResult",postHashtagResult);
-		model.addAttribute("userHashtagResult",userHashtagResult);
 		
 		return "/search/search";
 	}
