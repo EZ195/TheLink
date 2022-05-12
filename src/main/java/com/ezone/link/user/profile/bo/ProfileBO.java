@@ -1,6 +1,5 @@
 package com.ezone.link.user.profile.bo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,13 +10,10 @@ import com.ezone.link.common.FileManagerService;
 import com.ezone.link.post.bo.PostBO;
 import com.ezone.link.post.comment.bo.CommentBO;
 import com.ezone.link.post.join.bo.JoinBO;
-import com.ezone.link.post.join.model.Join;
-import com.ezone.link.post.model.Post;
 import com.ezone.link.search.bo.SearchBO;
 import com.ezone.link.user.follow.bo.FollowBO;
 import com.ezone.link.user.profile.dao.ProfileDAO;
 import com.ezone.link.user.profile.model.Profile;
-import com.ezone.link.user.profile.model.ProfileJoinPost;
 
 @Service
 public class ProfileBO {
@@ -36,9 +32,6 @@ public class ProfileBO {
 	
 	@Autowired
 	private FollowBO followBO;
-	
-	@Autowired
-	private SearchBO searchBO;
 	
 	public int addUserProfile(int userId, String nickname) {
 		return profileDAO.addUserProfile(userId, nickname);

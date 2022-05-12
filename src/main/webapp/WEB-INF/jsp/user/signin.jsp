@@ -20,9 +20,7 @@
 		<section>
 			<div class="signIn-container text_center">
 				<div class="sign-in">
-					<img class="logoImg" alt="link_logo" src="/static/img/linkLogo.png">
-					<p class="my-3">취미를 통해 세상과 연결하는 고리</p>
-			    	<img class="thelinklogoImg" alt="thelink_logo" src="/static/img/thelinkLogo.png">
+					<img class="logoImg" alt="link_logo" src="/static/img/thelinklogo.png">
 				</div>
 				<div class="sign-in">
 					<form class="form-control">
