@@ -23,9 +23,9 @@
 		
 		<section>
 		
-			<div class="container mt-5">
+			<div class="timeline-container mt-5">
 		   	 	<div class="row d-flex justify-content-center"> 
-			        <div class="col-md-7">
+			        <div class="my-3">
 			            <div class="card p-3 py-4">
 			                <div class="text-center">
 			                	<img src="${userProfile.profileImagePath }" width="100" class="rounded-circle">
@@ -71,8 +71,8 @@
 			    </div>
 			    
 			    <!-- 내가 참여한 모임 -->
-			    <div class="my-3 p-3 bg-body rounded shadow-sm">
-					<div class="border-bottom pb-2 mb-0">
+			    <div class="my-3 p-3 rounded shadow-sm">
+					<div class="pb-2 mb-0">
 						<span>내가 참여한 모임</span>
 					</div>
 					
@@ -103,8 +103,8 @@
 				</div>	
 						
 				<!-- 내가 주최한 모임 -->
-			    <div class="my-3 p-3 bg-body rounded shadow-sm">
-					<div class="border-bottom pb-2 mb-0">
+			    <div class="my-3 p-3 rounded shadow-sm">
+					<div class="pb-2 mb-0">
 						<span>내가 주최한 모임</span>
 					</div>
 							
@@ -151,9 +151,7 @@
 						<a class="more" href="#">All updates</a>
 					</small>
 				</div>
-			    	
 			</div>
-		
 		</section>
 		
 		<c:import url="/WEB-INF/jsp/common/footer.jsp"></c:import>
@@ -161,7 +159,20 @@
 	
 	<script>	
 		$().ready(function(){
-
+			
+			var arr1 = "${joinedList}";
+			var arr2 = "${postList}";
+			
+			var schedule = "";
+			
+			for(var i = 0; i < arr1.length; i++) {
+				schedule.append('1');
+			}
+			
+		
+			console.log(schedule);
+			
+			
 	        var calendarEl = document.getElementById('calendar');
            	var calendar = new FullCalendar.Calendar(calendarEl, {
                 timeZone: 'UTC',
@@ -169,7 +180,7 @@
                 events:[ // 일정 데이터 추가 , DB의 event를 가져오려면 JSON 형식으로 변환해 events에 넣어주면된다.
                     {
                         title:'일정',
-                        start:'2022-05-26'
+                        start:'2022-05-21'
                     }
                 ],
                 editable: true // false로 변경 시 draggable 작동 x 

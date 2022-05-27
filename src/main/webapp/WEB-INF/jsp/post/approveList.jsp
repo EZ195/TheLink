@@ -18,7 +18,7 @@
 	<div id="wrap">
 	<c:import url="/WEB-INF/jsp/common/header.jsp"/>
 		<section>
-			<div class="table-responsive">
+			<div class="approve-container">
 				<table class="table">
 					<c:forEach var="applierList" items="${applierList }">
 					<tr>

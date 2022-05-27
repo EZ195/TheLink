@@ -15,10 +15,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="wrap">
+	<div class="wrap">
 		<c:import url="/WEB-INF/jsp/common/header.jsp"/>
 		<section>
-			
+			<div class="timeline-container">
 			<div class="text_right search_wrap my-3">
 				<div class="search_area">
 					<input type="text" id="searchInput">
@@ -41,10 +41,6 @@
 			      </p>
 			    </div>
 			    </c:forEach>
-			    
-			    <small class="d-block text-end mt-3">
-			      <a class="more" href="#">All updates</a>
-			    </small>
 			</div>
 			  
 			<div class="my-3 p-3 bg-body rounded shadow-sm">
@@ -71,6 +67,7 @@
 					<a class="more" href="#">See More</a>
 				</small>
 			</div>
+		</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/common/footer.jsp"/>
 	</div>

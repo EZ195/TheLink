@@ -39,7 +39,7 @@ public class SearchController {
 		List<Post> postResult = searchBO.getPostListByKeyword(keyword);
 		List<Post> postHashtagResult = searchBO.getPostListByHashtag(keyword);
 		
-		// 추후에 BO에 작성할 예정
+		// 추후에 BO에 코드를 정리할 예정
 		Iterator<Post> iter = postHashtagResult.iterator();
 		while (iter.hasNext()) {
 			Post post1 = iter.next();

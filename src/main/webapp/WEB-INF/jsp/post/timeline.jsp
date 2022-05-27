@@ -20,32 +20,30 @@
 	<div class="wrap">
 		<c:import url="/WEB-INF/jsp/common/header.jsp"/>
 		<section>
-			
-			<div class="text_right search_wrap my-3">
-				<div class="search_area">
+		<div class="timeline-container">
+			<div class="my-3">
+				<div class="">
 					<input type="text" id="searchInput">
 			  		<button class="btn btn-outline-info" type="button" id="searchBtn">검색</button>
 				</div>
 			</div>
 			
-			<div class="float_right mb-3">
-			  
-			</div>
+			<!-- 게시물 리스트 -->
 			
-			<div class="my-3 p-3 bg-body rounded shadow-sm">
+			<div class="my-3 p-3 shadow-sm">
 				<div class="border-bottom pb-2 mb-0">
-				    <span>Recent updates</span>
+				    <span>Post List</span>
 				    <span class="text_right"><a href="/post/create_view" ><i class="bi bi-pencil-square"></i></a></span>
 				</div>
 				
 			    <c:forEach var="postList" items="${postList }" varStatus="status">
 			    <div id="post${status.index }" class="postShow">
-			    <div class="d-flex text-muted pt-3">
-			      <p class="pb-3 mb-0 small lh-sm border-bottom">
-			      	<a href="/search/search_view?keyword=${postList.postCategory }">#${postList.postCategory }</a>
-			        <strong class="d-block text-gray-dark">@${postList.userNickname }</strong>
-			        <a class="black" href="/post/detail_view?id=${postList.id }">${postList.title }</a>
-			      </p>
+			    <div class="d-flex text-muted pt-3 border-bottom"">
+			      <div class="pb-3 mb-0 small lh-sm">
+			      	<div><small><a class="d-block" href="/search/search_view?keyword=${postList.postCategory }">#${postList.postCategory }</a></small></div>
+			        <div class="my-1"><a class="a-black" href="/post/detail_view?id=${postList.id }">${postList.title }</a></div>
+			       	<div><small class="d-block">by. ${postList.userNickname }</small></div>
+			      </div>
 			    </div>
 			    </div>
 			    </c:forEach>
@@ -55,23 +53,25 @@
 			    </small>
 			  </div>
 			
-			<div class="my-3 p-3 bg-body rounded shadow-sm">
-			    <h6 class="border-bottom pb-2 mb-0">UserList</h6>
+			<!-- 사용자 리스트 -->
+			<div class="my-3 p-3 shadow-sm">
+			    <h6 class="border-bottom pb-2 mb-0">User List</h6>
 			    <c:forEach var="userList" items="${userList }" varStatus="status">
 			   <div id="user${status.index }" class="userShow">
-			    <div class="d-flex text-muted pt-3">
+			    <div class="d-flex text-muted pt-3 border-bottom"">
 			      <img src="${userList.profileImagePath }" class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32">
-			      <p class="pb-3 mb-0 small lh-sm border-bottom">
-			      	<a href="/user/profile/profile_view?id=${userList.userId }">@${userList.nickname }</a>
+			      <p class="pb-3 mb-0 small lh-sm">
+			      	@<a class="a-black" href="/user/profile/profile_view?id=${userList.userId }">${userList.nickname }</a>
 			      </p>
 			    </div>
 			   </div>
 			    </c:forEach>
 
 			    <small class="d-block text-end mt-3" id="moreUserBtn">
-			      <button class="more" >See More</button>
+			      <a href="#" class="more" >See More</a>
 			    </small>
 			</div>
+		</div>	
 		</section>
 		<c:import url="/WEB-INF/jsp/common/footer.jsp"/>
 	</div>

@@ -19,7 +19,7 @@
 	<div id="wrap">
 	<c:import url="/WEB-INF/jsp/common/header.jsp"/>
 		<section class="d-flex justify-content-center">
-		<div  class="w-75 my-5 ">
+		<div class="timeline-container">
 			<div>
 				<h3 class="text-center">${postDetail.title }</h3>
 				<textarea class="form-control mt-3" rows="5" id="contentInput">${postDetail.content }</textarea>
