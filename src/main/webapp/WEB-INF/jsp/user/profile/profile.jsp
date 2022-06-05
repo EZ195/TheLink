@@ -5,10 +5,10 @@
 <head>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-		
+	
 	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 	
@@ -23,9 +23,9 @@
 		
 		<section>
 		
-			<div class="container mt-5">
+			<div class="timeline-container mt-5">
 		   	 	<div class="row d-flex justify-content-center"> 
-			        <div class="col-md-7">
+			        <div class="my-3">
 			            <div class="card p-3 py-4">
 			                <div class="text-center">
 			                	<img src="${userProfile.profileImagePath }" width="100" class="rounded-circle">
@@ -71,8 +71,8 @@
 			    </div>
 			    
 			    <!-- 내가 참여한 모임 -->
-			    <div class="my-3 p-3 bg-body rounded shadow-sm">
-					<div class="border-bottom pb-2 mb-0">
+			    <div class="my-3 p-3 rounded shadow-sm">
+					<div class="pb-2 mb-0">
 						<span>내가 참여한 모임</span>
 					</div>
 					
@@ -103,8 +103,8 @@
 				</div>	
 						
 				<!-- 내가 주최한 모임 -->
-			    <div class="my-3 p-3 bg-body rounded shadow-sm">
-					<div class="border-bottom pb-2 mb-0">
+			    <div class="my-3 p-3 rounded shadow-sm">
+					<div class="pb-2 mb-0">
 						<span>내가 주최한 모임</span>
 					</div>
 							
@@ -128,7 +128,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach var="postList" items="${postList }">
+										<c:forEach var="postList" items="${postList }" varStatus="stat">
 										<c:if test="${postList.userId eq userProfile.userId}">
 													<tr>
 														<th scope="row">-</th>
@@ -151,27 +151,39 @@
 						<a class="more" href="#">All updates</a>
 					</small>
 				</div>
-			    	
 			</div>
-		
 		</section>
 		
 		<c:import url="/WEB-INF/jsp/common/footer.jsp"></c:import>
 	</div>
 	
-	<script>	
+	<script>
+	
+	
 		$().ready(function(){
+		<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 
+			
+			
+			var arr1Size = "${joinedList.size()}";
+			var arr2Cnt = "${postList.size()}";
+			console.log("${joinedList[0].statement}");	
 	        var calendarEl = document.getElementById('calendar');
            	var calendar = new FullCalendar.Calendar(calendarEl, {
                 timeZone: 'UTC',
                 initialView: 'dayGridMonth', // 홈페이지에서 다른 형태의 view를 확인할  수 있다.
-                events:[ // 일정 데이터 추가 , DB의 event를 가져오려면 JSON 형식으로 변환해 events에 넣어주면된다.
-                    {
-                        title:'일정',
-                        start:'2022-05-26'
-                    }
-                ],
+                events: [
+                	
+                			<c:forEach var="joinedList" items="${joinedList}"> 
+                			{title:"${joinedList.post.title}", start:"${joinedList.post.meetingDate}"},	
+                			</c:forEach>
+                			
+                			<c:forEach var="postList" items="${postList}">
+                				<c:if test="${postList.userId eq userProfile.userId }"> 
+                					{title:"${postList.title}", start:"${postList.meetingDate}"},
+                				</c:if>
+                			</c:forEach>
+                		],
                 editable: true // false로 변경 시 draggable 작동 x 
             });
             calendar.render();	        

@@ -1,5 +1,65 @@
 @charset "UTF-8";
 
+/* common_CSS */
+
+.align-right { 
+	text-align: right; 
+}
+
+.align-left {
+	text-align: left; 
+}
+
+.align-center { 
+	text-align: center; 
+} 
+
+.align-justify { 
+	text-align: justify; 
+}
+
+.direction-row {
+	flex-direction: row;
+}
+
+.direction-column {
+	flex-direction: column;
+}
+
+.wrap-nowrap {
+	flex-wrap: nowrap;
+}
+
+.wrap-wrap {
+	flex-wrap: wrap;
+}
+
+.content-flex-start {
+	justify-content: flex-start;
+}
+
+.content-flex-end{
+	justify-content: flex-end;
+}
+
+.content-center {
+	justify-content: center;;
+}
+
+.content-space-between{
+	justify-content: space-between;
+}
+
+.content-space-around{
+	justify-content: space-around;
+}
+
+.content-space-evenly{
+	justify-content: space-evenly;
+}
+
+/* header_CSS */
+
 header {
 	font-family: 'Oswald', sans-serif;
 	height:60px;
@@ -7,6 +67,7 @@ header {
 	color: #000000;
 }
 
+/* footer_CSS */
 footer {
 	height:30px;
 	background-color: #fdfdff;
@@ -16,6 +77,7 @@ footer {
 .wrap {
     width: 1000px;
     margin: auto;
+    background-color: rgb(253, 253, 255);
 }
 
 .signIn-container {
@@ -24,14 +86,24 @@ footer {
 	align-items: center;
 	width: 1000px;
 	height: 600px;
-	background-color: rgb(253, 253, 255);
 }
 
 .signUp-container {
-	display: flex;
-	justify-content: space-around;
-	width: 1000px;
-	background-color: rgb(253, 253, 255);
+	align-items: center;
+	width: 600px;
+	margin: auto;
+}
+
+.timeline-container {
+	align-items: center;
+	width: 700px;
+	margin: auto;
+}
+
+.approve-container {
+	align-items: center;
+	width: 500px;
+	margin: auto;
 }
 
 .logoImg{
@@ -46,10 +118,23 @@ footer {
 
 .sign-in {
 	width: 400px;
+	margin: 0 auto;
 }
 
 .sign-up {
-	width: 800px;
+	width: 600px;
+	flex-direction: row;
+	margin: 0 auto;
+}
+
+.post-form {
+	width: 600px;
+	flex-direction: row;
+	margin: 0 auto;
+}
+
+.felx-column{
+	flex-direction: column;
 }
 
 #loginEmailDuplication {
@@ -64,12 +149,19 @@ footer {
 #nicknameNotDuplication {
 	display:none;
 }
+
+.a-black {
+	color: black;
+	text-decoration: none;
+}
+
 .profileBox {
 	width: 150px;
     height: 150px; 
     border-radius: 70%;
     overflow: hidden;
 }
+
 .profileImg {
 	width: 100%;
     height: 100%;
@@ -83,10 +175,12 @@ footer {
 
 .sm {
 	color: rgb(192, 192, 192);
+	text-decoration: none;
 }
 .postShow {
 	display: none;
 }
+
 .userShow {
 	display: none;
 }
