@@ -24,14 +24,14 @@
 				</div>
 				<div class="sign-in">
 					<form class="form-control">
-						<h5 class="my-3">로그인 해주세요</h5>
+						<h5 class="my-3 align-center">로그인 해주세요</h5>
 						<div class="mx-3 my-3">
 							<input type="email" class="form-control" id="loginEmailInput" placeholder="name@example.com">
 				      	</div>
 						<div class="mx-3 my-3">
 							<input type="password" class="form-control" id="pwInput" placeholder="password">
 						</div>
-						<div class="mb-3 mt-3 my-3 mx-3">
+						<div class="mb-3 mt-3 my-3 mx-3 align-center">
 							<button class="w-100 btn btn-lg btn-primary" type="button" id="loginBtn">Sign in</button>
 							<label class="my-3">
 							<small>계정이 없다면 <a href="/user/signup_view">가입하기</a></small>

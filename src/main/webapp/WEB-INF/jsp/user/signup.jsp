@@ -16,15 +16,16 @@
 </head>
 <body>
 	<div class="wrap">
+		<c:import url="/WEB-INF/jsp/common/header.jsp"></c:import>
 		<section>
-			<div class="signUp-container text_center">
+			<div class="signUp-container">
 				<div class="sign-up my-5">
 					<form class="form-control">
-						<h5 class="my-3">회원가입</h5>
+						<h1 class="align-center my-3">회원가입</h1>
 						<!-- 아이디 -->
 						<div class="mb-3">
 							<div class="d-flex">
-								<div class="col-6">
+								<div class="col-9">
 								<input class="form-control" type="email" placeholder="아이디(이메일로 입력해주세요)" id="loginEmailInput">
 								</div>
 								<button type="button" class="btn btn-light col-3" id="loginEmail_duplicate">중복확인</button>
@@ -35,26 +36,33 @@
 						
 						<!-- 비밀번호  -->
 						<div class="mb-3">
-							<input class="form-control" type="password" placeholder="비밀번호" id="passwordInput">
-							<input class="form-control" type="password" placeholder="비밀번호 확인" id=passwordCheck>
-		
+							<div class="col-10 mb-3">
+								<input class="form-control" type="password" placeholder="비밀번호" id="passwordInput">							
+							</div>
+							<div class="col-10">
+								<input class="form-control" type="password" placeholder="비밀번호 확인" id=passwordCheck>
+							</div>		
 						</div>
 						
 						<!-- 닉네임  -->
 						<div class="mb-3">
 							<div class="d-flex">
+								<div class="col-9">
 								<input class="form-control" type="text" placeholder="닉네임" id="nicknameInput">
-								<button type="button" class="btn btn-light" id="nickname_duplicate">중복확인</button>
+								</div>
+								<button type="button" class="btn btn-light col-3" id="nickname_duplicate">중복확인</button>
 							</div>
 							<small class="text-danger" id="nicknameDuplication">중복된 닉네임 입니다.</small>
 							<small class="text-primary" id="nicknameNotDuplication">사용 가능한 닉네임 입니다.</small>
 						</div>
 						
 						<!-- 생년월일 -->
-						<label>생년월일</label> 
-						<div class="container mb-3"> 
+						<div class="mb-3"> 
+							<div class="d-flex content-center">
+							<label>생년월일 : </label> 
+							
 							<!-- year -->
-							<div>
+							<div class="col-3">
 							<select class="form-control" name="year" id="year" title="년도">
 								<option id="yearSel" value="sel">선택</option>
 								<c:forEach var="i" begin="1900" end="2022" step="1">
@@ -65,17 +73,18 @@
 							<div>년</div>
 							
 							<!-- month -->
-							<div>
+							<div class="col-3">
 							<select class="form-control" name="month" id="month" title="월">
 								<option id="monthSel" value="sel">선택</option>
 								<c:forEach var="i" begin="1" end="12" step="1">
 									<option value="${i }">${i }</option>
 								</c:forEach>
 							</select>
-							<div>월</div>
 							</div>
+							<div>월</div>
+							
 							<!-- day -->
-							<div>
+							<div class="col-3">
 							<select class="form-control" name="day" id="day" title="일">
 								<option id="daySel" value="sel">선택</option>
 								<c:forEach var="i" begin="1" end="31" step="1">
@@ -84,16 +93,22 @@
 							</select>
 							</div>
 							<div>일</div>
+							</div>
 						</div>
 						
 						<!-- 성별 -->
-						<div class="mb-3"> 
+						<div class="mb-3 d-flex content-space-around"> 
+							<div>
 							<input type="radio" name="gender" id="male" value="male">남
-							<input type="radio" name="gender" id="female" value="female">여
+							</div>
+							<div>
+							<input type="radio" name="gender" id="female" value="female"> 여
+							</div>
 						</div>
 						
 						<!-- 관심사 -->
-						<h3>관심사를 선택해주세요(중복체크 가능)</h3>
+						<div align="center">
+						<h4>관심사를 선택해주세요(중복체크 가능)</h4>
 						<div class="btn-group btn-group-sm mt-3">
 							<div class="form-check">
 							<h5>문화·예술</h5>
@@ -347,10 +362,11 @@
 								<label class="btn btn-outline-danger" for="improvement6">사이드 프로젝트</label>
 							</div>
 						</div>
+						</div>
 						
 						<div align="center" class="mt-3 my-3">
-							<button class="btn btn-lg btn-primary" type="button" id="signupBtn">회원가입</button>
-							이미 회원이라면, <a href="/user/signin_view">로그인</a> 하러가기				
+							<button class="btn btn-lg btn-primary mb-3" type="button" id="signupBtn">회원가입</button>
+							<p>이미 회원이라면, <a href="/user/signin_view">로그인</a> 하러가기</p>		
 						</div>
 					</form>
 				</div>

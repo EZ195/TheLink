@@ -18,7 +18,9 @@
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/common/header.jsp"/>
 		<section>
-			<form>
+			<div class="timeline-container">
+			<div class="post-form my-5">
+			<form class="form-control">
 				<h1 align="center">모임 만들기</h1>
 				
 				<!-- 제목 -->
@@ -296,6 +298,8 @@
 				</div>
 				<button type="button" id="createBtn">모임 만들기</button>
 			</form>
+			</div>
+		</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/common/footer.jsp"/>
 	</div>
