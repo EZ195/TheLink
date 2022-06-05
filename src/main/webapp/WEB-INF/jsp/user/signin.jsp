@@ -20,7 +20,7 @@
 		<section>
 			<div class="signIn-container text_center">
 				<div class="sign-in">
-					<img class="logoImg" alt="link_logo" src="/static/img/thelinklogo.png">
+					<img class="logoImg" alt="link_logo" src="/static/img/thelinkLogo.png">
 				</div>
 				<div class="sign-in">
 					<form class="form-control">
