@@ -18,11 +18,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="wrap">
-		<c:import url="/WEB-INF/jsp/common/header.jsp"></c:import>
-		
+	<div class="wrap">
+		<c:import url="/WEB-INF/jsp/common/header.jsp"/>
 		<section>
-		
 			<div class="timeline-container mt-5">
 		   	 	<div class="row d-flex justify-content-center"> 
 			        <div class="my-3">

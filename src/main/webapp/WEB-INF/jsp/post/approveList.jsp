@@ -15,11 +15,17 @@
 <title>Approve</title>
 </head>
 <body>
-	<div id="wrap">
+	<div class="wrap">
 	<c:import url="/WEB-INF/jsp/common/header.jsp"/>
 		<section>
-			<div class="approve-container">
+			<div class="approve-container my-5 align-center">
 				<table class="table">
+				<c:choose>
+				<c:when test="${empty applierList }">
+					아직 신청자가 없습니다
+				</c:when>
+				</c:choose>
+				
 					<c:forEach var="applierList" items="${applierList }">
 					<tr>
 						<td>${applierList.userNickname }</td>
@@ -27,10 +33,10 @@
 							<c:when test="${postWriter eq userId}">
 								<c:choose>
 									<c:when test="${applierList.statement eq '승인 대기' }">
-										<td><button type="button" class="approveBtn btn btn-danger" data-user-id="${applierList.userId }">승인</button></td>							
+										<td><button type="button" class="approveBtn btn btn-sm btn-danger" data-user-id="${applierList.userId }">승인</button></td>							
 									</c:when>
 									<c:otherwise>
-										<td><button type="button" class="btn btn-secondary" disabled='disabled'>승인 완료</button></td>
+										<td><button type="button" class="btn btn-sm btn-secondary" disabled='disabled'>승인 완료</button></td>
 									</c:otherwise>
 								</c:choose>
 							</c:when>
@@ -38,15 +44,19 @@
 						</c:otherwise>
 						</c:choose>
 					</tr>
-					</c:forEach>
+					</c:forEach>				
 				</table>
 			</div>
 		</section>
-	<c:import url="/WEB-INF/jsp/common/footer.jsp"/>
+
 	</div>
 	
 	<script>
 		$().ready(function(){
+			let size = "${applierList.size()}";
+			console.log(size);
+			
+			
 			$(".approveBtn").on("click",function(){
 
 				let userId = $(this).data("user-id");

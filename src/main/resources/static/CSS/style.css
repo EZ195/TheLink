@@ -102,7 +102,7 @@ footer {
 
 .approve-container {
 	align-items: center;
-	width: 500px;
+	width: 300px;
 	margin: auto;
 }
 
@@ -122,12 +122,6 @@ footer {
 }
 
 .sign-up {
-	width: 600px;
-	flex-direction: row;
-	margin: 0 auto;
-}
-
-.post-form {
 	width: 600px;
 	flex-direction: row;
 	margin: 0 auto;
@@ -183,4 +177,8 @@ footer {
 
 .userShow {
 	display: none;
+}
+
+#contentInput {
+	background-color:#FFFFE0;
 }
