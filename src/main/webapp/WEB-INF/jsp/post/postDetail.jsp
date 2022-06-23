@@ -16,44 +16,55 @@
 <title>Post Detail</title>
 </head>
 <body>
-	<div id="wrap">
+	<div class="wrap">
 	<c:import url="/WEB-INF/jsp/common/header.jsp"/>
 		<section class="d-flex justify-content-center">
 		<div class="timeline-container">
-			<div>
+			<div class="sign-up my-5">
 				<h3 class="text-center">${postDetail.title }</h3>
-				<textarea class="form-control mt-3" rows="5" id="contentInput">${postDetail.content }</textarea>
-				<span>날짜 : ${postDetail.meetingDate }</span>
-				<span>인원 수 : ${postDetail.headcount }</span>
-				<a href="#">#${postDetail.postCategory }</a>
+				<div><a href="#">#${postDetail.postCategory }</a></div>
+				<div>
+					<p class="form-control mt-3" id="contentInput">${postDetail.content }</p>
+				</div>
+				<div class="d-flex content-space-evenly mt-5">
+					<div>날짜 : ${postDetail.meetingDate }</div>
+					<div>인원 수 : ${postDetail.headcount }</div>
+				</div>
 			</div>
-			<div>  
-				<c:choose>
-					<c:when test="${postDetail.userId eq userId  }">
-						<a href="/post/update_view?id=${postDetail.id }">수정</a>
-						<button id="deleteBtn" type="button" data-post-id="${postDetail.id}">삭제</button>
-					</c:when>
-					<c:when test="${isChecked}">
-						<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop_delete">취소하기</button>
-					</c:when >
-					<c:otherwise>
-						<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">참여 신청</button>
-					</c:otherwise>
-				</c:choose>
-				<a href="/post/join/approve_list_view?postId=${postDetail.id }">신청자 리스트</a>
+			<div class="align-center">
+				<div>
+					<c:choose>
+						<c:when test="${postDetail.userId eq userId  }">
+							<a class="btn btn btn-danger mb-3" href="/post/update_view?id=${postDetail.id }">수정</a>
+							<button class="btn btn btn-danger mb-3" id="deleteBtn" type="button" data-post-id="${postDetail.id}">삭제</button>
+						</c:when>
+						<c:when test="${isChecked}">
+							<button type="button" class="btn btn-danger mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop_delete">취소하기</button>
+						</c:when >
+						<c:otherwise>
+							<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">참여 신청</button>
+						</c:otherwise>
+					</c:choose>
+					<a class="btn btn btn-warning mb-3" id="approveListBtn1" href="/post/join/approve_list_view?postId=${postDetail.id }">신청자 리스트</a>
+				</div>
+				<div>				
+				</div>
 			</div>
 			<!-- 후기 댓글 리스트 -->
 			<div>
 				<hr>
 				<c:forEach var="commentList" items="${commentList }">
 					${commentList.userNickname } : <input type="text" value="${commentList.comment }" id="updateCommentInput">
-					<input type="button" value="수정" id="updateCommentBtn" data-post-id="${postDetail.id }">
+					<input class="btn btn-sm btn-primary mb-3" type="button" value="수정" id="updateCommentBtn" data-post-id="${postDetail.id }">
 				</c:forEach>
 				<hr>
 			</div>
 			<!-- 후기 댓글 입력 -->
-			<div>
-				<input type="text" id="commentInput"> <button type="button" id="commentBtn" data-post-id="${postDetail.id}">확인</button>
+			<div class="d-flex">
+				<div class="col-8">
+					<input class="form-control" type="text" id="commentInput">
+				</div>
+				<button class="btn btn-sm btn-danger mb-3" type="button" id="commentBtn" data-post-id="${postDetail.id}">확인</button>
 			</div>
 		</div>
 		</section>
@@ -92,7 +103,6 @@
 	
 	<script>
 		$().ready(function(){
-			
 			$("#deleteBtn").on("click",function(){
 				
 				let postId = $(this).data("post-id");
