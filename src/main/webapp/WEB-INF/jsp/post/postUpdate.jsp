@@ -15,18 +15,30 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="wrap">
+	<div class="wrap">
 	<c:import url="/WEB-INF/jsp/common/header.jsp"/>
 		<section>
-			<div class="w-75 my-5 ">
-				<input type="text" id="titleInput" value="${postUpdate.title }">
-				<input type="text" id="contentInput" value="${postUpdate.content }">
-				<input type="date" id="dateInput" value="${postUpdate.meetingDate }">
-				<input type="text" id="headcountInput" value="${postUpdate.headcount }">
+			<div class="timeline-container">
+				<div class="sign-up my-5">
+					<div>
+						<input class="form-control" type="text" id="titleInput" value="${postUpdate.title }">
+					</div>
+					<div>
+						<textarea class="form-control mt-3" type="text" rows="10" id="contentInput">${postUpdate.content }</textarea>
+					</div>
+					<div class="d-flex content-space-evenly mt-3">
+						<div class="col-5">
+							<input class="form-control" type="date" id="dateInput" value="${postUpdate.meetingDate }">
+						</div>
+						<div class="col-3">
+							<input class="form-control" type="text" id="headcountInput" value="${postUpdate.headcount }">
+						</div>
+					</div>
+					<div class="mt-3 align-center">
+						<button class="btn btn-primary" type="button" data-post-id="${postUpdate.id}" id=updateBtn>수정하기</button>
+					</div>		
+				</div>
 			</div>
-			<div>
-				<button type="button" data-post-id="${postUpdate.id}" id=updateBtn>수정하기</button>
-			</div>		
 		</section>
 	<c:import url="/WEB-INF/jsp/common/footer.jsp"/>
 	</div>

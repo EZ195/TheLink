@@ -40,6 +40,8 @@ public class SearchController {
 		List<Post> postHashtagResult = searchBO.getPostListByHashtag(keyword);
 		
 		// 추후에 BO에 코드를 정리할 예정
+		
+		// 게시글 검색
 		Iterator<Post> iter = postHashtagResult.iterator();
 		while (iter.hasNext()) {
 			Post post1 = iter.next();
@@ -54,16 +56,19 @@ public class SearchController {
 			postResult.add(post);
 		}
 		
+		// 사용자 검색
 		List<Profile> userResult = searchBO.getUserListByKeyword(keyword);
 		List<Profile> userHashtagResult = null;
 		
 		if (userId.size() > 0) {
 			userHashtagResult = profileBO.getUserProfileList(userId);
 			
-			for(Profile profile1:userHashtagResult) {
+			Iterator<Profile> iterUser = userHashtagResult.iterator();
+			while (iterUser.hasNext()) {
+				Profile profile1 = iterUser.next();
 				for(Profile profile2:userResult) {
 					if(profile1.getUserId() == profile2.getUserId()) {
-						userHashtagResult.remove(profile1);
+						iterUser.remove();
 					}
 				}
 			}
