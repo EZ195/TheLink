@@ -91,7 +91,7 @@
 					    </tr>
 					 </c:forEach>  
 					  </tbody>
-					</table>	
+					</table>
 				</div>	
 						
 				<!-- 내가 주최한 모임 -->
