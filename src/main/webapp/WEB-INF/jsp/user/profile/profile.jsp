@@ -91,13 +91,7 @@
 					    </tr>
 					 </c:forEach>  
 					  </tbody>
-					</table>
-					    
-						<small class="d-block text-end mt-3">
-							<a class="more" href="#">All updates</a>
-						</small>
-			
-					
+					</table>					
 				</div>	
 						
 				<!-- 내가 주최한 모임 -->
@@ -144,10 +138,6 @@
 							<a href="/post/create_view" class="btn btn-primary">모임 만들기</a>
 						</c:when>
 					</c:choose>
-						   
-					<small class="d-block text-end mt-3">
-						<a class="more" href="#">All updates</a>
-					</small>
 				</div>
 			</div>
 		</section>
