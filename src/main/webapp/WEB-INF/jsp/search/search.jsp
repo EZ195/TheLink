@@ -62,10 +62,6 @@
 						<p>검색결과가 없습니다.</p>
 					</c:otherwise>
 				</c:choose>
-				    
-				<small class="d-block text-end mt-3">
-					<a class="more" href="#">See More</a>
-				</small>
 			</div>
 		</div>
 		</section>
