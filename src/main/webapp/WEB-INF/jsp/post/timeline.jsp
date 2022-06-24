@@ -49,7 +49,7 @@
 			    </c:forEach>
 			    
 			    <small class="d-block text-end mt-3" id="morePostBtn">
-			      <a class="more" href="#">All updates</a>
+			      <a class="more" href="#">모두보기</a>
 			    </small>
 			  </div>
 			
@@ -68,7 +68,7 @@
 			    </c:forEach>
 
 			    <small class="d-block text-end mt-3" id="moreUserBtn">
-			      <a href="#" class="more" >See More</a>
+			      <a href="#" class="more" >모두보기</a>
 			    </small>
 			</div>
 		</div>	
