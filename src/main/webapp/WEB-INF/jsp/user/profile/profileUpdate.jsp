@@ -27,6 +27,7 @@
 			        <div class="align-center">
 				        <div class="col-5 mt-3" style="margin:0 auto;">
 				        	<input class="form-control" type="text" id="updateNickname" value="${userProfile.nickname }">
+				        	<button type="button" class="btn btn-light col-5" id="updateNickname_duplicate">중복확인</button>
 				        </div>
 				        <div class="px-4 mt-1">
 				        	<textarea class="form-control mt-3" rows="10" id="introduceInput">${userProfile.introduce }</textarea>
